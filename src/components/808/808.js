@@ -43,7 +43,7 @@ class MachineDrum extends React.Component {
 
     const Steps = kick.map((el, index) => {
 
-      return < Step activeStep={this.state.drums[activeDrum][index]} onClick={this.handleStep.bind(this, index)} key={index} />
+      return < Step activeStep={this.state.drums[activeDrum][index]} onClick={this.handleStep.bind(this, index)} index={index} key={index} />
 
     })
 

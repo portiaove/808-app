@@ -24,11 +24,16 @@ class MachineDrum extends React.Component {
   }
 
   handleStep = (index, e) => {
-    const { activeDrum } = this.state
-    console.log(index)
-    console.log(activeDrum)
+
+    const { activeDrum, drums } = this.state
+    const newArr = drums[activeDrum].slice()
+    newArr[index] = !drums[activeDrum][index]
+
     this.setState({
-      
+      drums: {
+        ...drums,
+        [activeDrum]: newArr
+      }             
     })
   }
 
@@ -38,7 +43,7 @@ class MachineDrum extends React.Component {
 
     const Steps = kick.map((el, index) => {
 
-      return < Step onClick={this.handleStep.bind(this, index)} key={index} />
+      return < Step activeStep={this.state.drums[activeDrum][index]} onClick={this.handleStep.bind(this, index)} key={index} />
 
     })
 

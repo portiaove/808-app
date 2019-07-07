@@ -2,6 +2,8 @@ import React from 'react';
 import Drum from './Drum';
 import Step from './Step'
 
+let hola = null
+
 class MachineDrum extends React.Component {
   state = {
     drums: {
@@ -12,9 +14,11 @@ class MachineDrum extends React.Component {
       hiTom: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
       loTom: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     },
-    bpm: Number,
-    activeDrum: 'kick'
+    bpm: 120,
+    activeDrum: 'kick',
+    counter: 0
   }
+
 
   handleActiveDrum = (e) => {
     const activeDrum = e.target.name
@@ -37,13 +41,62 @@ class MachineDrum extends React.Component {
     })
   }
 
+  count = () => {
+    const { counter } = this.state
+    if (counter > 15) {
+      this.setState({
+        counter: 0
+      })
+    } else {
+      console.log(counter)
+      this.setState({
+        counter: counter + 1
+      })
+    }
+  }
+  
+  bpmConversion = (bpm) => {
+    return Math.round(60000/bpm)
+  }
+
+  handleStart = () => {
+    const { bpm } = this.state
+    if (!hola) {
+      this.setState({
+        counter: 0
+      })
+      hola = setInterval(this.count, 500 /*this.bpmConversion(bpm)*/) //NOT WORKING
+    } else {
+      clearInterval(hola);
+      hola = null;
+    }
+  }
+
+
+  handleBpm = (e) => {
+    let bpm = e.target.value
+    this.setState({
+      bpm: bpm
+    })
+  }
+
   render() {
+
     const {activeDrum} = this.state
     const {kick} = this.state.drums
 
     const Steps = kick.map((el, index) => {
 
-      return < Step activeStep={this.state.drums[activeDrum][index]} onClick={this.handleStep.bind(this, index)} index={index} key={index} />
+      return < Step 
+      activeStep={this.state.drums[activeDrum][index]} 
+      kick={this.state.drums.kick[index]}
+      snare={this.state.drums.snare[index]}
+      clHat={this.state.drums.clHat[index]}
+      opHat={this.state.drums.opHat[index]}
+      hiTom={this.state.drums.hiTom[index]}
+      loTom={this.state.drums.loTom[index]}
+      onClick={this.handleStep.bind(this, index)} 
+      index={index} key={index} />
 
     })
 
@@ -58,6 +111,12 @@ class MachineDrum extends React.Component {
           < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Lo Tom" name="loTom"/>
           < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Hi Tom" name="hiTom"/>
         </div>
+        <button onClick={this.handleStart}>Start</button>
+        <h3>{this.state.bpm}</h3><h3>bpm</h3>
+        <form>
+          <input onChange={this.handleBpm} value={this.state.bpm} type="range" name="bpm" min="56" max="240" step="0.5"/>
+        </form>
+
         <div className="container pt-5 d-flex justify-content-around ">
 
           {Steps}

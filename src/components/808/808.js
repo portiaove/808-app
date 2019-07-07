@@ -89,6 +89,7 @@ class MachineDrum extends React.Component {
 
       return < Step 
       activeStep={this.state.drums[activeDrum][index]} 
+      counter={this.state.counter}
       kick={this.state.drums.kick[index]}
       snare={this.state.drums.snare[index]}
       clHat={this.state.drums.clHat[index]}

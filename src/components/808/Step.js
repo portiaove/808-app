@@ -1,5 +1,4 @@
 import React from 'react'
-import Tone from 'tone';
 
 
 class Step extends React.Component {

@@ -1,17 +1,12 @@
 import React from 'react';
 import Drum from './Drum';
 import Step from './Step';
+import BeatService from '../../services/BeatService';
 
 const EMPTY_BEAT = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 
 let start = null
 
-const kick = new Audio('kick.wav')
-const snare = new Audio('snare.wav')
-const clHat = new Audio('clHat.wav')
-const opHat = new Audio('opHat.wav')
-const loTom = new Audio('loTom.wav')
-const hiTom = new Audio('hiTom.wav')
 
 class MachineDrum extends React.Component {
   state = {
@@ -69,7 +64,7 @@ class MachineDrum extends React.Component {
 
     if (!start) {
       this.setState({ counter: 0 }, () => {
-        start = setInterval(this.count, Math.round(60000/bpm)) //NOT WORKING
+        start = setInterval(this.count, Math.round((60000/bpm)/4)) //NOT WORKING
       })
     } else {
       clearInterval(start);
@@ -80,6 +75,7 @@ class MachineDrum extends React.Component {
 
   handleBpm = (e) => {
     let bpm = Number(e.target.value)
+    console.log(this.state.bpm)
 
     this.setState({
       bpm: bpm
@@ -89,8 +85,20 @@ class MachineDrum extends React.Component {
     })
   }
 
-  saveBeat = () => {
-    
+  saveBeat = (e) => {
+    e.preventDefault()
+
+    const { bpm } = this.state
+    const data = {...this.state.drums, bpm}
+
+    BeatService.saveBeat(data).then(
+      (response) => {
+        console.log(response)
+      },
+      error => {
+        console.error(error)
+      }
+    )
   }
 
 
@@ -130,10 +138,6 @@ class MachineDrum extends React.Component {
         <form>
           <input onChange={this.handleBpm} value={this.state.bpm} type="range" name="bpm" min="56" max="240" step="0.5"/>
         </form>
-
-        {JSON.stringify(this.state.drums)}
-
-        <p>{JSON.stringify(this.state.counter)}</p>
 
         <div className="container pt-5 d-flex justify-content-around ">
 

@@ -39,3 +39,14 @@
   padding: 30 5 0 5;
 
 }
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}

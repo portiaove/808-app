@@ -6,15 +6,31 @@ import BeatService from '../../services/BeatService'
 class Profile extends React.Component {
 
   state = {
+    username: '',
+    email: '',
+    avatarURL: '',
     beats: []
   }
 
   fetchBeats = () => {
-    console.log(this.props.match)
+    if (this.props.match.params.id) {
+      const { id } = this.props.match.params
+      BeatService.getProfile(id).then(
+        beats => this.setState({
+          beats: beats.data.beats,
+          username: beats.data.username,
+          email: beats.data.email,
+          avatarURL: beats.data.avatarURL
+        })
+      )
+    } else {
     const { id } = this.props.user
     BeatService.userBeats(id).then(
-      beats => this.setState({ beats: beats.data })
+      beats => this.setState({ 
+        beats: beats.data 
+      })
     )
+    }
   }
 
   componentDidMount() {
@@ -22,11 +38,11 @@ class Profile extends React.Component {
   }
 
   render() {
+    console.log(this.state.beats)
   
     const { beats } = this.state
   const { username, email, avatarURL } = this.props.user
 
-  console.log(this.state.beats)
     return(
       <div className="Profile">
         <img src={avatarURL} />

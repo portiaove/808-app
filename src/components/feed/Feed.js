@@ -7,8 +7,8 @@ class Feed extends React.Component {
   state = {
     beats: [],
     bpm: '',
-    popular: '',
-    recent: ''
+    likes: '',
+    createdAt: ''
   }
 
   fetchBeats = () => {
@@ -39,32 +39,49 @@ class Feed extends React.Component {
   }
 
   handleRecent = () => {
-    if (this.state.recent !== 'asc') {
+    if (this.state.createdAt !== 'asc') {
       this.setState({
         beats: this.state.beats.sort((a, b) => (a.createdAt > b.createdAt) ? 1 : (a.createdAt < b.createdAt) ? -1 : 0),
-        recent: 'asc'
+        createdAt: 'asc'
       })
     } else {
       this.setState({
         beats: this.state.beats.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : (a.createdAt > b.createdAt) ? -1 : 0),
-        recent: 'desc'
+        createdAt: 'desc'
       })
     }
   }
 
   handlePopular = () => {
-    if (this.state.popular !== 'asc') {
+    if (this.state.likes !== 'asc') {
       this.setState({
         beats: this.state.beats.sort((a, b) => (a.likes > b.likes) ? 1 : (a.likes < b.likes) ? -1 : 0),
-        popular: 'asc'
+        likes: 'asc'
       })
     } else {
       this.setState({
         beats: this.state.beats.sort((a, b) => (a.likes < b.likes) ? 1 : (a.likes > b.likes) ? -1 : 0),
-        popular: 'desc'
+        likes: 'desc'
       })
     }
   }
+
+
+  // NO FUNCIONA...!
+  
+  // handleOrder = (name) => {
+  //   if (this.state[name] !== 'asc') {
+  //     this.setState({
+  //       beats: this.state.beats.sort((a, b) => (a[name] > b[name]) ? 1 : (a[name] < b[name]) ? -1 : 0),
+  //       [name]: 'asc'
+  //     })
+  //   } else {
+  //     this.setState({
+  //       beats: this.state.beats.sort((a, b) => (a[name] < b[name]) ? 1 : (a[name] > b[name]) ? -1 : 0),
+  //       [name]: 'desc'
+  //     })
+  //   }
+  // }
 
 
   render() { console.log(this.state)
@@ -72,6 +89,7 @@ class Feed extends React.Component {
     return(
       <div className="Feed">
         <div>
+          {/* <button onClick={this.handleOrder('bpm')}>Bpm</button> */}
           <button onClick={this.handleBpm}>Bpm</button>
           <button onClick={this.handleRecent}>Recent</button>
           <button onClick={this.handlePopular}>Popular</button>

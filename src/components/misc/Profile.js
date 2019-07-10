@@ -16,12 +16,14 @@ class Profile extends React.Component {
     if (this.props.match.params.id) {
       const { id } = this.props.match.params
       BeatService.getProfile(id).then(
-        beats => this.setState({
-          beats: beats.data.beats,
-          username: beats.data.username,
-          email: beats.data.email,
-          avatarURL: beats.data.avatarURL
-        })
+        beats => {
+          this.setState({
+            beats: beats.data.beats,
+            username: beats.data.username,
+            email: beats.data.email,
+            avatarURL: beats.data.avatarURL
+          })
+        }
       )
     } else {
     const { id } = this.props.user

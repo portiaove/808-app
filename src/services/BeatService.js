@@ -8,4 +8,10 @@ const userBeats = id => http.get(`/users/${id}/beats/`)
 
 const getProfile = id => http.get(`/users/${id}`)
 
-export default { saveBeat, listBeats, userBeats, getProfile }
+const likeBeat = beatId => http.post(`/beats/${beatId}/like`)
+
+const dislikeBeat = beatId => http.delete(`/beats/${beatId}/like`)
+
+const checkIfLiked = beatId => http.get(`/beats/${beatId}/like`)
+
+export default { saveBeat, listBeats, userBeats, getProfile, likeBeat, dislikeBeat, checkIfLiked }

@@ -27,12 +27,12 @@ class Feed extends React.Component {
   handleBpm = () => {
     if (this.state.bpm !== 'asc') {
       this.setState({
-        beats: this.state.beats.sort((a, b) => (a.bpm > b.bpm) ? 1 : (a.bpm < b.bpm) ? -1 : 0),
+        beats: this.state.beats.sort((a, b) => (a.bpm - b.bpm)),
         bpm: 'asc'
       })
     } else {
       this.setState({
-        beats: this.state.beats.sort((a, b) => (a.bpm < b.bpm) ? 1 : (a.bpm > b.bpm) ? -1 : 0),
+        beats: this.state.beats.sort((a, b) => (b.bpm - a.bpm)),
         bpm: 'desc'
       })
     }
@@ -55,12 +55,12 @@ class Feed extends React.Component {
   handlePopular = () => {
     if (this.state.likes !== 'asc') {
       this.setState({
-        beats: this.state.beats.sort((a, b) => (a.likes > b.likes) ? 1 : (a.likes < b.likes) ? -1 : 0),
+        beats: this.state.beats.sort((a, b) => (a.likes - b.likes)),
         likes: 'asc'
       })
     } else {
       this.setState({
-        beats: this.state.beats.sort((a, b) => (a.likes < b.likes) ? 1 : (a.likes > b.likes) ? -1 : 0),
+        beats: this.state.beats.sort((a, b) => (b.likes - a.likes)),
         likes: 'desc'
       })
     }
@@ -68,7 +68,7 @@ class Feed extends React.Component {
 
 
   // NO FUNCIONA...!
-  
+
   // handleOrder = (name) => {
   //   if (this.state[name] !== 'asc') {
   //     this.setState({
@@ -84,7 +84,7 @@ class Feed extends React.Component {
   // }
 
 
-  render() { console.log(this.state)
+  render() { 
     const { beats } = this.state
     return(
       <div className="Feed">

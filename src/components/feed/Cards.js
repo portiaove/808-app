@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import BeatService from '../../services/BeatService'
 
 let start = null
 
 class Cards extends React.Component {
 
   state = {
-    counter: 0
+    counter: 0,
+    likes: this.props.beats.likes,
+    liked: null
   }
 
   count = () => {
@@ -40,10 +43,43 @@ class Cards extends React.Component {
       start = null
     }
   }
+
+  handleLike = (e) => {
+    e.preventDefault()
+
+    const { liked, likes } = this.state
+    const { id } = this.props.beats
+    console.log(liked)
+    console.log(this.props.beats.likes)
+    if (!liked) {
+      BeatService.likeBeat(id).then(
+        () => {
+          console.log("like")
+          this.setState({ likes: likes + 1, liked: !liked })
+        }
+      )
+    } else {
+      BeatService.dislikeBeat(id).then(
+        () => {
+          console.log("dislike")
+          this.setState({ likes: likes - 1, liked: !liked })
+        }
+      )
+    }
+  }
+
+  componentDidMount() {
+
+    const { id } = this.props.beats
+    BeatService.checkIfLiked(id).then(
+      response => {this.setState({ liked: response.data })}
+    )
+  }
   
   render() {
     const { bpm, name, likes, createdAt }
     = this.props.beats
+    console.log(likes)
       
     const { username, avatarURL, id } = this.props.beats.owner
 
@@ -63,7 +99,8 @@ class Cards extends React.Component {
                           <button onClick={this.handleStart}>Play</button>
                       </div>{ avatarURL &&
                       <div className="card-body">
-                          <h3>{likes} likes</h3>
+                          <h3>{this.state.likes} likes</h3>
+                          <button onClick={this.handleLike}>Like</button>
                       </div>}
                   </div>
                   <div className="card-footer">

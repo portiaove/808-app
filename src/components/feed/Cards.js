@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import BeatService from '../../services/BeatService'
+import Moment from 'react-moment'
 
 let start = null
 
@@ -79,8 +80,7 @@ class Cards extends React.Component {
   render() {
     const { bpm, name, likes, createdAt }
     = this.props.beats
-    console.log(likes)
-      
+    console.log(createdAt)      
     const { username, avatarURL, id } = this.props.beats.owner
 
   return(
@@ -101,6 +101,9 @@ class Cards extends React.Component {
                       <div className="card-body">
                           <h3>{this.state.likes} likes</h3>
                           <button onClick={this.handleLike}>Like</button>
+                          <div>
+                          <small className="text-muted"><Moment fromNow>{createdAt}</Moment></small>
+                          </div>
                       </div>}
                   </div>
                   <div className="card-footer">

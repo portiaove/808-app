@@ -94,7 +94,7 @@ class Cards extends React.Component {
                           <img className="" src={avatarURL} alt="Card image cap"/>
                       </div>}
                       <div className="card-body">
-                          <h4 className="card-title">LA GRAN ROLA</h4>
+                          <h4 className="card-title">{name ? name : 'LA GRAN ROLA'}</h4>
                           {avatarURL && <Link to={`/profile/${id}`} className="card-text">{username}</Link>}
                           <button onClick={this.handleStart}>Play</button>
                       </div>{ avatarURL &&

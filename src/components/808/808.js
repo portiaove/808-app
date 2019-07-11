@@ -20,7 +20,9 @@ class MachineDrum extends React.Component {
     },
     bpm: 120,
     activeDrum: 'kick',
-    counter: 0
+    counter: 0,
+    name: '',
+    nameIt: false
   }
 
 
@@ -88,8 +90,8 @@ class MachineDrum extends React.Component {
   saveBeat = (e) => {
     e.preventDefault()
 
-    const { bpm } = this.state
-    const data = {...this.state.drums, bpm}
+    const { bpm, name } = this.state
+    const data = {...this.state.drums, bpm, name}
 
     BeatService.saveBeat(data).then(
       (response) => {
@@ -101,10 +103,20 @@ class MachineDrum extends React.Component {
     )
   }
 
+  nameBeat = (e) => {
+    e.preventDefault()
+    this.setState({ nameIt: !this.state.nameIt})
+  }
+
+  handleName = (e) => {
+    const { name, value } = e.target
+    this.setState({ [name]: value})
+  }
+
 
   render() {
-    const {activeDrum} = this.state
-    const {kick} = this.state.drums
+    const { activeDrum, nameIt, name } = this.state
+    const { kick } = this.state.drums
 
     const Steps = kick.map((el, index) => {
       return < Step 
@@ -133,7 +145,16 @@ class MachineDrum extends React.Component {
           < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Hi Tom" name="hiTom"/>
         </div>
         <button onClick={this.handleStart}>Start</button>      {/*ALTERNAR START STOP*/}
-        <button onClick={this.saveBeat}>Save</button>
+        {
+          nameIt && <div>
+            <form>
+              <label>Name it!</label>
+              <input onChange={this.handleName} name='name' value={name}></input>
+              <button onClick={this.saveBeat}>Save</button>
+            </form>
+          </div>
+        }
+        <button onClick={this.nameBeat}>Save</button>
         <h3>{this.state.bpm}</h3><h3>bpm</h3>
         <form>
           <input onChange={this.handleBpm} value={this.state.bpm} type="range" name="bpm" min="56" max="240" step="0.5"/>

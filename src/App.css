@@ -45,7 +45,7 @@
   flex: 1 1 auto;
 }
 
-img {
+.avatarURL {
   height: auto;
   max-width: 100%;
   vertical-align: middle;

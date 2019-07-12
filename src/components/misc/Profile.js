@@ -40,16 +40,17 @@ class Profile extends React.Component {
   }
 
   render() {
-    console.log(this.state.beats)
-  
+    
     const { beats } = this.state
-  const { username, email, avatarURL } = this.props.user
+    const { username, email, avatarURL } = this.props.user
+    const { id } = this.props.match.params
+    console.log(beats)
 
     return(
       <div className="Profile">
-        <img src={avatarURL} />
-        <h1>{username}</h1>
-        <p>{email}</p>
+        <img src={id ? this.state.avatarURL : avatarURL} alt=''/>
+        <h1>{id ? this.state.username : username}</h1>
+        <p>{id ? this.state.email : email}</p>
         {beats.map((beat, i) => (
           < Cards beats={beat} key={i} />
         ))}

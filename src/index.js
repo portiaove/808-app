@@ -8,9 +8,9 @@ import './App.css'
 import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
-  <Router>
-    < AuthStore>
-     <App />
-    </AuthStore> 
-  </Router>
+  < Router >
+    < AuthStore >
+     < App />
+    </AuthStore > 
+  </Router >
   ,document.getElementById('root'));

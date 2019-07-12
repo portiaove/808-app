@@ -4,7 +4,7 @@ import AuthField from '../misc/AuthField';
 import AuthService from '../../services/AuthService';
 import { withAuthContext } from '../../contexts/AuthStore';
 const EMAIL_PATTERN = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-const URL_PATTERN = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
+// const URL_PATTERN = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
 const PASS_PATTERN = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
 
 const validators = {
@@ -32,6 +32,7 @@ class Register extends React.Component {
     redirect: false,
     wrongCredentials: false
   }
+
 
   handleChange = (e) => {
     const { name, value } = e.target
@@ -117,6 +118,7 @@ class Register extends React.Component {
             onChange={this.handleChange}
             onBlur={this.handleBlur}
             validationClassName={this.getValidationClassName('username')}
+            errorMessage='At least 4 characters'
             />
             < AuthField 
             label='Email'
@@ -127,6 +129,7 @@ class Register extends React.Component {
             onChange={this.handleChange}
             onBlur={this.handleBlur}
             validationClassName={this.getValidationClassName('email')}
+            errorMessage='Invalid email format'
             />
             < AuthField 
             label='Password'
@@ -137,6 +140,7 @@ class Register extends React.Component {
             onChange={this.handleChange}
             onBlur={this.handleBlur}
             validationClassName={this.getValidationClassName('password')}
+            errorMessage='At least 8 characters, 1 number, 1 upper and 1 lowercase'
             />
             <button type='submit'
             className={`btn ${hasErrors ? 'btn-danger' : 'btn-success'}`}

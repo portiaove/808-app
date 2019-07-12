@@ -25,7 +25,6 @@ class MachineDrum extends React.Component {
     nameIt: false
   }
 
-
   handleActiveDrum = (e) => {
     const activeDrum = e.target.name
     this.setState({
@@ -45,21 +44,6 @@ class MachineDrum extends React.Component {
       }             
     })
   }
-
-  count = () => {
-    const { counter } = this.state
-    
-    this.state.drums.kick[this.state.counter] && new Audio('kick.wav').play()
-    this.state.drums.snare[this.state.counter] && new Audio('snare.wav').play()
-    this.state.drums.clHat[this.state.counter] && new Audio('clHat.wav').play()
-    this.state.drums.opHat[this.state.counter] && new Audio('opHat.wav').play()
-    this.state.drums.loTom[this.state.counter] && new Audio('loTom.wav').play()
-    this.state.drums.hiTom[this.state.counter] && new Audio('hiTom.wav').play()
-
-    this.setState({
-      counter: counter > 14 ? 0 : counter + 1
-    })
-  }
   
   handleStart = () => {
     const { bpm } = this.state
@@ -74,6 +58,20 @@ class MachineDrum extends React.Component {
     }
   }
 
+  count = () => {
+    const { counter, drums } = this.state
+    
+    drums.kick[counter] && new Audio('kick.wav').play()
+    drums.snare[counter] && new Audio('snare.wav').play()
+    drums.clHat[counter] && new Audio('clHat.wav').play()
+    drums.opHat[counter] && new Audio('opHat.wav').play()
+    drums.loTom[counter] && new Audio('loTom.wav').play()
+    drums.hiTom[counter] && new Audio('hiTom.wav').play()
+
+    this.setState({
+      counter: counter > 14 ? 0 : counter + 1
+    })
+  }
 
   handleBpm = (e) => {
     let bpm = Number(e.target.value)
@@ -83,7 +81,7 @@ class MachineDrum extends React.Component {
       bpm: bpm
     }, () => {
       clearInterval(start)
-      start = setInterval(this.count, Math.round(60000/bpm))
+      start = setInterval(this.count, Math.round((60000/bpm)/4))
     })
   }
 

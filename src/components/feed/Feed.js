@@ -10,6 +10,7 @@ class Feed extends React.Component {
     likes: '',
     createdAt: ''
   }
+  
 
   fetchBeats = () => {
     BeatService.listBeats().then(
@@ -23,6 +24,8 @@ class Feed extends React.Component {
   componentDidMount() {
     this.fetchBeats()
   }
+
+
 
   handleBpm = () => {
     if (this.state.bpm !== 'asc') {

@@ -11,6 +11,7 @@ const AuthField = (props) => {
     onChange,
     onBlur,
     validationClassName,
+    errorMessage
    } = props
 
    const inputAttrs = {
@@ -19,7 +20,8 @@ const AuthField = (props) => {
      name,
      value,
      onChange,
-     onBlur
+     onBlur,
+     errorMessage
    }
 
   return(
@@ -27,9 +29,9 @@ const AuthField = (props) => {
       <label>{label}</label>
       <input {...inputAttrs}/>
       {touch && !error && (
-      <div className='valid-feedback'>Looking Good!</div>)}
+      <div className='valid-feedback'></div>)}
       {touch && error && (
-        <div className='invalid-feedback'>INVALID FEEDBACK</div> // PASAR ERROR CONCRETO DE VALIDACIÓN
+        <div className='invalid-feedback'>{errorMessage}</div> // PASAR ERROR CONCRETO DE VALIDACIÓN
       )}
     </div>
   )

@@ -13,8 +13,21 @@ class Cards extends React.Component {
     liked: null
   }
 
+  handleStart = () => {
+    const { bpm } = this.props.beats
+
+    if (!start) {
+      this.setState({ counter: 0 }, () => {
+        start = setInterval(this.count, Math.round((60000/bpm)/4))
+      })
+    } else {
+      clearInterval(start);
+      start = null
+    }
+  }
+
   count = () => {
-    const { bpm, clHat, opHat, loTom, hiTom, kick, snare } = this.props.beats
+    const { clHat, opHat, loTom, hiTom, kick, snare } = this.props.beats
     const { counter } = this.state
 
     kick[counter] && new Audio('kick.wav').play()
@@ -27,22 +40,6 @@ class Cards extends React.Component {
     this.setState({
       counter: counter > 14 ? 0 : counter + 1
     })
-
-
-  }
-
-  handleStart = () => {
-
-    const { bpm } = this.props.beats
-
-    if (!start) {
-      this.setState({ counter: 0 }, () => {
-        start = setInterval(this.count, Math.round((60000/bpm)/4))
-      })
-    } else {
-      clearInterval(start);
-      start = null
-    }
   }
 
   handleLike = (e) => {
@@ -78,9 +75,8 @@ class Cards extends React.Component {
   }
   
   render() {
-    const { bpm, name, likes, createdAt }
+    const { bpm, name, createdAt }
     = this.props.beats
-    console.log(createdAt)      
     const { username, avatarURL, id } = this.props.beats.owner
 
   return(
@@ -91,7 +87,7 @@ class Cards extends React.Component {
                   <div className="card-horizontal">
                   { avatarURL &&
                        <div className="img-square-wrapper">
-                          <img className="" src={avatarURL} alt="Card image cap"/>
+                          <img className="avatarURL" src={avatarURL} alt=""/>
                       </div>}
                       <div className="card-body">
                           <h4 className="card-title">{name ? name : 'LA GRAN ROLA'}</h4>

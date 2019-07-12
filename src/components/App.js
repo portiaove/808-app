@@ -2,7 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom'
 import Login from './auth/Login'
 import Register from './auth/Register'
-import Home from './misc/Home'
+// import Home from './misc/Home'
+import Footer from './misc/Footer'
 import MachineDrum from './808/808'
 import Feed from './feed/Feed'
 import Profile from './misc/Profile'
@@ -19,6 +20,7 @@ function App() {
           {/* <Route exact path="/home" component={Home} /> */}
           <Route exact path='/808' component={MachineDrum} />
         </Switch>
+          <Footer />
       </main>
   );
 }

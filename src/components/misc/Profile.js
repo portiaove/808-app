@@ -42,7 +42,7 @@ class Profile extends React.Component {
 
   logout = () => {
     AuthService.logout().then(
-      response => console.log(response)
+      () => this.props.onUserChange(null)
     )
   }
 
@@ -51,7 +51,6 @@ class Profile extends React.Component {
     const { beats } = this.state
     const { username, email, avatarURL } = this.props.user
     const { id } = this.props.match.params
-    console.log(beats)
 
     return(
       <div className="Profile">

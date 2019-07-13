@@ -118,7 +118,7 @@ class Register extends React.Component {
             onChange={this.handleChange}
             onBlur={this.handleBlur}
             validationClassName={this.getValidationClassName('username')}
-            errorMessage='At least 4 characters'
+            errormessage='At least 4 characters'
             />
             < AuthField 
             label='Email'
@@ -129,7 +129,7 @@ class Register extends React.Component {
             onChange={this.handleChange}
             onBlur={this.handleBlur}
             validationClassName={this.getValidationClassName('email')}
-            errorMessage='Invalid email format'
+            errormessage='Invalid email format'
             />
             < AuthField 
             label='Password'
@@ -140,7 +140,7 @@ class Register extends React.Component {
             onChange={this.handleChange}
             onBlur={this.handleBlur}
             validationClassName={this.getValidationClassName('password')}
-            errorMessage='At least 8 characters, 1 number, 1 upper and 1 lowercase'
+            errormessage='At least 8 characters, 1 number, 1 upper and 1 lowercase'
             />
             <button type='submit'
             className={`btn ${hasErrors ? 'btn-danger' : 'btn-success'}`}

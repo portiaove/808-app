@@ -3,6 +3,7 @@ import Drum from './Drum';
 import Step from './Step';
 import BeatService from '../../services/BeatService';
 
+
 const EMPTY_BEAT = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 
 let start = null

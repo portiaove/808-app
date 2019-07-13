@@ -70,9 +70,8 @@ class Login extends React.Component {
 
     AuthService.login(this.state.data).then(
       (response) => {
-        console.log(this.props)
         this.setState({ redirect: true })
-        console.log(this.props)
+        console.log(this.state.redirect)
         this.props.onUserChange(response.data)
       },
       error => {
@@ -110,6 +109,7 @@ class Login extends React.Component {
             onChange={this.handleChange}
             onBlur={this.handleBlur}
             validationClassName={this.getValidationClassName('email')}
+            errormessage='Invalid email format'
             />
             < AuthField 
             label='Password'
@@ -120,6 +120,7 @@ class Login extends React.Component {
             onChange={this.handleChange}
             onBlur={this.handleBlur}
             validationClassName={this.getValidationClassName('password')}
+            errormessage='At least 8 characters, 1 number, 1 upper and 1 lowercase'
             />
             <button type='submit'
             className={`btn ${hasErrors ? 'btn-danger' : 'btn-success'}`}

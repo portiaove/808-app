@@ -7,8 +7,9 @@ import Footer from './misc/Footer'
 import MachineDrum from './808/808'
 import Feed from './feed/Feed'
 import Profile from './misc/Profile'
+import { withAuthContext } from '../contexts/AuthStore'
 
-function App() {
+function App(props) {
   return (
       <main className="App">
         <Switch>
@@ -20,9 +21,9 @@ function App() {
           {/* <Route exact path="/home" component={Home} /> */}
           <Route exact path='/808' component={MachineDrum} />
         </Switch>
-          <Footer />
+          {props.isAuthenticated && <Footer />}
       </main>
   );
 }
 
-export default App;
+export default withAuthContext(App);

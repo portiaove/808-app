@@ -6,11 +6,11 @@ class Feed extends React.Component {
 
   state = {
     beats: [],
-    bpm: '',
-    likes: '',
-    createdAt: ''
+    orderedBy: {
+      field: null,
+      direction: null
+    }
   }
-  
 
   fetchBeats = () => {
     BeatService.listBeats().then(
@@ -26,69 +26,116 @@ class Feed extends React.Component {
   }
 
 
-
   handleBpm = () => {
-    if (this.state.bpm !== 'asc') {
+    if (this.state.orderedBy.direction !== 'asc') {
       this.setState({
-        beats: this.state.beats.sort((a, b) => (a.bpm - b.bpm)),
-        bpm: 'asc'
+        orderedBy: {
+          field: 'bpm',
+          direction: 'asc'
+        }
       })
     } else {
       this.setState({
-        beats: this.state.beats.sort((a, b) => (b.bpm - a.bpm)),
-        bpm: 'desc'
+        orderedBy: {
+          field: 'bpm',
+          direction: 'desc'
+        }
       })
     }
   }
 
   handleRecent = () => {
-    if (this.state.createdAt !== 'asc') {
+    if (this.state.orderedBy.direction !== 'asc') {
       this.setState({
-        beats: this.state.beats.sort((a, b) => (a.createdAt > b.createdAt) ? 1 : (a.createdAt < b.createdAt) ? -1 : 0),
-        createdAt: 'asc'
+        orderedBy: {
+          field: 'createdAt',
+          direction: 'asc'
+        }
       })
     } else {
       this.setState({
-        beats: this.state.beats.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : (a.createdAt > b.createdAt) ? -1 : 0),
-        createdAt: 'desc'
+        orderedBy: {
+          field: 'createdAt',
+          direction: 'desc'
+        }
       })
     }
   }
 
   handlePopular = () => {
-    if (this.state.likes !== 'asc') {
+    if (this.state.orderedBy.direction !== 'asc') {
       this.setState({
-        beats: this.state.beats.sort((a, b) => (a.likes - b.likes)),
-        likes: 'asc'
+        orderedBy: {
+          field: 'likes',
+          direction: 'asc'
+        }
       })
     } else {
       this.setState({
-        beats: this.state.beats.sort((a, b) => (b.likes - a.likes)),
-        likes: 'desc'
+        orderedBy: {
+          field: 'likes',
+          direction: 'desc'
+        }
       })
     }
   }
 
-
-  // NO FUNCIONA...!
-
-  // handleOrder = (name) => {
-  //   if (this.state[name] !== 'asc') {
+  // handleOrder = (field) => {
+  //   if (this.state.orderedBy.direction !== 'asc') {
   //     this.setState({
-  //       beats: this.state.beats.sort((a, b) => (a[name] > b[name]) ? 1 : (a[name] < b[name]) ? -1 : 0),
-  //       [name]: 'asc'
+  //       orderedBy: {
+  //         field: field,
+  //         direction: 'asc'
+  //       }
   //     })
   //   } else {
   //     this.setState({
-  //       beats: this.state.beats.sort((a, b) => (a[name] < b[name]) ? 1 : (a[name] > b[name]) ? -1 : 0),
-  //       [name]: 'desc'
+  //       orderedBy: {
+  //         field: field,
+  //         direction: 'desc'
+  //       }
   //     })
   //   }
   // }
 
+  beatsByBpm = (direction) => {
+    if (direction !== 'asc') {
+      return this.state.beats.sort((a, b) => (a.bpm - b.bpm))
+    } else {
+      return this.state.beats.sort((a, b) => (b.bpm - a.bpm))
+    }    
+  }
+
+  beatsByCreatedAt = (direction) => {
+    if (direction !== 'asc') {
+      return this.state.beats.sort((a, b) => (a.createdAt > b.createdAt) ? 1 : (a.createdAt < b.createdAt) ? -1 : 0)
+    } else {
+      return this.state.beats.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : (a.createdAt > b.createdAt) ? -1 : 0)
+    }   
+  }
+
+  beatsByPopular = (direction) => {
+    if (direction !== 'asc') {
+      return this.state.beats.sort((a, b) => (a.likes - b.likes))
+    } else {
+      return this.state.beats.sort((a, b) => (b.likes - a.likes))
+    }   
+  }
 
   render() { 
-    const { beats } = this.state
+    const { beats, orderedBy } = this.state
+    let orderedBeats = beats
+
+    if (orderedBy.field === 'bpm') {
+      orderedBeats = this.beatsByBpm(orderedBy.direction)
+    }
+    if (orderedBy.field === 'createdAt') {
+      orderedBeats = this.beatsByCreatedAt(orderedBy.direction)
+    }
+    if (orderedBy.field === 'likes') {
+      orderedBeats = this.beatsByPopular(orderedBy.direction)
+    }
+
     return(
       <div className="Feed">
         <div>
@@ -98,8 +145,8 @@ class Feed extends React.Component {
           <button onClick={this.handlePopular}>Popular</button>
         </div>
         <div>
-        {beats.map((beat, i) => (
-          < Cards beats={beat} key={i} />
+        {orderedBeats.map((beat, i) => (
+          < Cards fetchBeats={this.fetchBeats} beats={beat} key={i} />
         ))}
         </div>
       </div>

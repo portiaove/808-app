@@ -2,6 +2,7 @@ import React from 'react';
 import Cards from '../feed/Cards';
 import { withAuthContext } from '../../contexts/AuthStore'
 import BeatService from '../../services/BeatService'
+import AuthService from '../../services/AuthService'
 
 class Profile extends React.Component {
 
@@ -39,6 +40,12 @@ class Profile extends React.Component {
     this.fetchBeats()
   }
 
+  logout = () => {
+    AuthService.logout().then(
+      response => console.log(response)
+    )
+  }
+
   render() {
     
     const { beats } = this.state
@@ -51,6 +58,7 @@ class Profile extends React.Component {
         <img src={id ? this.state.avatarURL : avatarURL} alt=''/>
         <h1>{id ? this.state.username : username}</h1>
         <p>{id ? this.state.email : email}</p>
+        <button onClick={this.logout}>Logout</button>
         {beats.map((beat, i) => (
           < Cards beats={beat} key={i} />
         ))}

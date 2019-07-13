@@ -7,6 +7,7 @@ import homeIcon from '../../world.svg'
 import homeSelectedIcon from '../../worldSelected.svg'
 import profileIcon from '../../profile.svg'
 import profileSelectedIcon from '../../profileSelected.svg'
+import holdingHands from '../../holding-hands-in-a-circle.svg'
 import { Link, withRouter } from 'react-router-dom'
 
 
@@ -36,6 +37,9 @@ class Footer extends React.Component {
         <div>
          <Link to='/808' onClick={this.handleSelection}><img alt='808Icon' name='/808'  className='homeIcon' src={(selected === '/808') ? beatSelectedIcon : beatIcon} /></Link>
         </div>
+        {/* <div>
+         <Link to='/808' onClick={this.handleSelection}><img alt='808Icon' name='/808'  className='homeIcon' src={(selected === '/808') ? holdingHands : holdingHands} /></Link>
+        </div> */}
       </div>
     </footer>
   )

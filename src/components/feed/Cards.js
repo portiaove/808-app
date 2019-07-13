@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import BeatService from '../../services/BeatService'
 import Moment from 'react-moment'
+import './Cards.css'
 
 let start = null
 
@@ -66,35 +67,35 @@ class Cards extends React.Component {
     const { username, avatarURL, id } = this.props.beats.owner
 
   return(
-    <div className="container-fluid">
-      <div className="row">
-          <div className="col-12 mt-3">
-              <div className="card">
-                  <div className="card-horizontal">
-                  { avatarURL &&
-                       <div className="img-square-wrapper">
-                          <img className="avatarURL" src={avatarURL} alt=""/>
-                      </div>}
-                      <div className="card-body">
-                          <h4 className="card-title">{name ? name : 'LA GRAN ROLA'}</h4>
-                          {avatarURL && <Link to={`/profile/${id}`} className="card-text">{username}</Link>}
-                          <button onClick={this.handleStart}>Play</button>
-                      </div>{ avatarURL &&
-                      <div className="card-body">
-                          <h3>{this.props.beats.likes} likes</h3>
-                          <button onClick={this.handleLike}>Like</button>
-                          <div>
-                          <small className="text-muted"><Moment fromNow>{createdAt}</Moment></small>
-                          </div>
-                      </div>}
-                  </div>
-                  <div className="card-footer">
-                      <small className="text-muted">{bpm} bpm</small>
-                  </div>
-              </div>
-          </div>
+    <div className='Card'>
+      <div className="Info">
+      { avatarURL &&
+          <Link to={`/profile/${id}`} className="Info-Left">
+            <div className='Image-Wrapper'>
+              <img className="Card-Image" src={avatarURL} alt=""/>
+            </div>
+            <div className='Card-Username'>
+            <h5>{username}</h5>
+            </div>
+          </Link>
+      }
+        <div className="Info-Right">
+          <div>
+            <h3 className="title">{name ? name : 'LA GRAN ROLA'}</h3>
+            <button onClick={this.handleStart}>Play</button>
+          </div>{ avatarURL &&
+          <div className="body">
+            <h3>{this.props.beats.likes} likes</h3>
+            <button onClick={this.handleLike}>Like</button>
+            
+          </div>}
+        </div>
       </div>
-  </div>
+      <div className="Card-Footer">
+        <small className="createdAt"><Moment fromNow>{createdAt}</Moment></small>
+        <small className='bpm'>{bpm} bpm</small>
+      </div>
+    </div>
   )
 }
 }

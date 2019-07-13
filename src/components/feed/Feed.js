@@ -1,6 +1,7 @@
 import React from 'react';
 import Cards from './Cards';
 import BeatService from '../../services/BeatService';
+import './Feed.css'
 
 class Feed extends React.Component {
 
@@ -138,17 +139,18 @@ class Feed extends React.Component {
 
     return(
       <div className="Feed">
-        <div>
+
+        <header className="BtnOrders">
           {/* <button onClick={this.handleOrder('bpm')}>Bpm</button> */}
           <button onClick={this.handleBpm}>Bpm</button>
           <button onClick={this.handleRecent}>Recent</button>
           <button onClick={this.handlePopular}>Popular</button>
-        </div>
-        <div className="">
+        </header>
+        
         {orderedBeats.map((beat, i) => (
           < Cards fetchBeats={this.fetchBeats} beats={beat} key={i} />
         ))}
-        </div>
+
       </div>
     )
   }

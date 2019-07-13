@@ -1,0 +1,13 @@
+.Feed {
+  display: flex;
+  flex-direction: column;
+  /* padding-bottom: 18%; */
+}
+
+.BtnOrders {
+  background-color: yellowgreen;
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0px;
+}
+

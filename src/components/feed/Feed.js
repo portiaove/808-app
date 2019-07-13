@@ -144,7 +144,7 @@ class Feed extends React.Component {
           <button onClick={this.handleRecent}>Recent</button>
           <button onClick={this.handlePopular}>Popular</button>
         </div>
-        <div>
+        <div className="">
         {orderedBeats.map((beat, i) => (
           < Cards fetchBeats={this.fetchBeats} beats={beat} key={i} />
         ))}

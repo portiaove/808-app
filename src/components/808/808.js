@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import Drum from './Drum';
 import Step from './Step';
 import BeatService from '../../services/BeatService';
@@ -23,7 +24,8 @@ class MachineDrum extends React.Component {
     activeDrum: 'kick',
     counter: 0,
     name: '',
-    nameIt: false
+    nameIt: false,
+    redirect: false
   }
 
   handleActiveDrum = (e) => {
@@ -94,6 +96,7 @@ class MachineDrum extends React.Component {
 
     BeatService.saveBeat(data).then(
       (response) => {
+        this.setState({ redirect: true })
         console.log(response)
       },
       error => {
@@ -104,18 +107,23 @@ class MachineDrum extends React.Component {
 
   nameBeat = (e) => {
     e.preventDefault()
+    clearInterval(start)
     this.setState({ nameIt: !this.state.nameIt})
   }
 
   handleName = (e) => {
     const { name, value } = e.target
-    this.setState({ [name]: value})
+    this.setState({ [name]: value })
   }
 
 
   render() {
     const { activeDrum, nameIt, name } = this.state
     const { kick } = this.state.drums
+
+    if (this.state.redirect) {
+      return < Redirect to="/home" />
+    }
 
     const Steps = kick.map((el, index) => {
       return < Step 

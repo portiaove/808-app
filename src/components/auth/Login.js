@@ -71,7 +71,6 @@ class Login extends React.Component {
     AuthService.login(this.state.data).then(
       (response) => {
         this.setState({ redirect: true })
-        console.log(this.state.redirect)
         this.props.onUserChange(response.data)
       },
       error => {

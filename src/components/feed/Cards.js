@@ -69,6 +69,7 @@ class Cards extends React.Component {
 
   componentDidMount() {
     this.fetchLikes()
+    console.log('paulis')
   }
   
 

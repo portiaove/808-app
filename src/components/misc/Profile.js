@@ -3,6 +3,7 @@ import Cards from '../feed/Cards';
 import { withAuthContext } from '../../contexts/AuthStore'
 import BeatService from '../../services/BeatService'
 import AuthService from '../../services/AuthService'
+import './Profile.css'
 
 class Profile extends React.Component {
 
@@ -69,10 +70,16 @@ class Profile extends React.Component {
 
     return(
       <div className="Profile">
-        <img src={avatarURL} alt=''/>
-        <h1>{username}</h1>
-        <p>{email}</p>
-        {!id && <button onClick={this.logout}>Logout</button>}
+        <header className='Profile-Header'>
+          <div className='Profile-Image'>
+            <img src={avatarURL} alt=''/>
+          </div>
+          <div className='Profile-Info'>
+            <h1>{username}</h1>
+            <p>{email}</p>
+            {!id && <button onClick={this.logout}>Logout</button>}
+          </div>
+        </header>
         {beats.map((beat, i) => (
           < Cards beats={beat} key={i} />
         ))}

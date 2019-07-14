@@ -1,4 +1,5 @@
 import React from 'react'
+import './808.css'
 
 
 class Step extends React.Component {
@@ -16,13 +17,16 @@ class Step extends React.Component {
   render() {
     const { onClick, activeMode, index, counter } = this.props
     const activeStep = index === counter
+    console.log('hola')
 
     return(
-      <div>
-      <button onClick={onClick} style={{background: 'yellow', height: '40px', width: '20px'}}>
-        <div style={{background: `${activeStep || activeMode ? 'red' : 'black'}`, height: '9px', width: '9px'}}></div>
-      </button>
-        <p>{index+1}</p>
+      <div className={activeStep ? 'Step-Active' : 'Step'}>
+        <button onClick={onClick} className='Stp-Btn'>
+          <div className='Little-Step'>
+            <div style={{background: `${activeStep || activeMode ? 'red' : 'black'}`, height: '9px', width: '9px'}}></div>
+            <p>{index+1}</p>
+          </div>
+        </button>
         {activeStep && <p><strong>O</strong></p>}
       </div>
     )

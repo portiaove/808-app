@@ -35,12 +35,12 @@ class Cards extends React.Component {
     const { clHat, opHat, loTom, hiTom, kick, snare } = this.props.beats
     const { counter } = this.state
 
-    kick[counter] && new Audio('kick.wav').play()
-    snare[counter] && new Audio('snare.wav').play()
-    clHat[counter] && new Audio('clHat.wav').play()
-    opHat[counter] && new Audio('opHat.wav').play()
-    loTom[counter] && new Audio('loTom.wav').play()
-    hiTom[counter] && new Audio('hiTom.wav').play()
+    kick[counter] && new Audio('kick.mp3').play()
+    snare[counter] && new Audio('snare.mp3').play()
+    clHat[counter] && new Audio('clHat.mp3').play()
+    opHat[counter] && new Audio('opHat.mp3').play()
+    loTom[counter] && new Audio('loTom.mp3').play()
+    hiTom[counter] && new Audio('hiTom.mp3').play()
 
     this.setState({
       counter: counter > 14 ? 0 : counter + 1
@@ -100,11 +100,10 @@ class Cards extends React.Component {
           <div className='Info-Right-Down'>
             { avatarURL &&
             <div>
-              {/* <button onClick={this.handleLike}>Like</button> */}
-            <svg  onClick={this.handleLike} className={liked ? 'heartOn' : 'heartOff'} viewBox="0 0 32 29.6">
-              <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
-              c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
-            </svg> 
+              <svg  onClick={this.handleLike} className={liked ? 'heartOn' : 'heartOff'} viewBox="0 0 32 29.6">
+                <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+                c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+              </svg> 
               <h5>{this.props.beats.likes} likes</h5>
             </div>}
             <img onClick={this.handleStart} className='Play-Pause-Btn' src={play ? pauseIcon : playIcon} />

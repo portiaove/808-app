@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 import Drum from './Drum';
 import Step from './Step';
 import BeatService from '../../services/BeatService';
+import './808.css'
 
 
 const EMPTY_BEAT = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
@@ -64,12 +65,12 @@ class MachineDrum extends React.Component {
   count = () => {
     const { counter, drums } = this.state
     
-    drums.kick[counter] && new Audio('kick.wav').play()
-    drums.snare[counter] && new Audio('snare.wav').play()
-    drums.clHat[counter] && new Audio('clHat.wav').play()
-    drums.opHat[counter] && new Audio('opHat.wav').play()
-    drums.loTom[counter] && new Audio('loTom.wav').play()
-    drums.hiTom[counter] && new Audio('hiTom.wav').play()
+    drums.kick[counter] && new Audio('kick.mp3').play()
+    drums.snare[counter] && new Audio('snare.mp3').play()
+    drums.clHat[counter] && new Audio('clHat.mp3').play()
+    drums.opHat[counter] && new Audio('opHat.mp3').play()
+    drums.loTom[counter] && new Audio('loTom.mp3').play()
+    drums.hiTom[counter] && new Audio('hiTom.mp3').play()
 
     this.setState({
       counter: counter > 14 ? 0 : counter + 1
@@ -140,10 +141,10 @@ class MachineDrum extends React.Component {
     })
 
     return (
-      <div>
+      <div className='Machine-Drum'>
         <h1>This Is The Machine Drum</h1>
         < Link to='/home'>Go Back</Link>        
-        <div className="d-flex justify-content-center ">
+        <div className="Instruments">
           < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Kick" name="kick"/>
           < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Snare" name="snare"/>
           < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Cl Hat" name="clHat"/>
@@ -151,23 +152,25 @@ class MachineDrum extends React.Component {
           < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Lo Tom" name="loTom"/>
           < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Hi Tom" name="hiTom"/>
         </div>
-        <button onClick={this.handleStart}>Start</button>      {/*ALTERNAR START STOP*/}
-        {
-          nameIt && <div>
-            <form>
-              <label>Name it!</label>
-              <input onChange={this.handleName} name='name' value={name}></input>
-              <button onClick={this.saveBeat}>Save</button>
-            </form>
-          </div>
-        }
-        <button onClick={this.nameBeat}>Save</button>
-        <h3>{this.state.bpm}</h3><h3>bpm</h3>
-        <form>
-          <input onChange={this.handleBpm} value={this.state.bpm} type="range" name="bpm" min="56" max="240" step="0.5"/>
-        </form>
+        <div className='Controllers'>
+          <h3>{this.state.bpm}</h3><h3>bpm</h3>
+          <form>
+            <input onChange={this.handleBpm} value={this.state.bpm} type="range" name="bpm" min="56" max="240" step="0.5"/>
+          </form>
+          <button onClick={this.handleStart}>Start</button>      {/*ALTERNAR START STOP*/}
+          {
+            nameIt && <div>
+              <form>
+                <label>Name it!</label>
+                <input onChange={this.handleName} name='name' value={name}></input>
+                <button onClick={this.saveBeat}>Save</button>
+              </form>
+            </div>
+          }
+          <button onClick={this.nameBeat}>Save</button>
+        </div>
 
-        <div className="container pt-5 d-flex justify-content-around ">
+        <div className="Steps">
 
           {Steps}
 

@@ -4,6 +4,7 @@
   margin: 10px 0px;
   background-color: bisque;
   align-items: center;
+  border-radius: 5px;
 }
 
 .Info {
@@ -13,30 +14,30 @@
 
 
 .Info-Left {
-  width: 40%;
+  flex: 1;
   height: 100%;
   text-decoration: none;
   display: flex;
   flex-direction: column;
   color: inherit;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   align-items: center;
 
 
 }
 
 .Card-Username {
-  border: 2px solid black;
-  width: 100%;
-  height: 10%;
+  /* border: 2px solid black; */
+  flex: 1;
 }
 
 .Card-Image{ 
-  height: auto;
+  flex: 2;
   max-width: 100%;
   vertical-align: middle;
-  border: 1px solid green;
+  /* border: 1px solid green; */
   flex-grow: 1;
+  border-radius: 45px;
 }
 
 .Image-Wrapper {
@@ -48,9 +49,41 @@
 
 .Info-Right {
   display: flex;
-  width: 100%;
+  flex: 2;
+  flex-direction: column;
+  border: 1px solid black;
 }
 
+.Info-Right-Up {
+  border: 1px solid black;
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.Info-Right-Down {
+  border: 1px solid black;
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Info-Right-Down div{
+  
+  display: flex;
+  border: 1px solid black;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.Play-Pause-Btn {
+  width: 40px;
+  height: 40px;
+}
 
 
 
@@ -64,9 +97,32 @@
 }
 
 .createdAt {
-  width: 40%;
+  flex: 1;
 }
 
 .bpm {
-  width: 100%;
+  flex: 2;
+}
+
+
+.heartOff {
+  fill: grey;
+  position: relative;
+  top: 5px;
+  width: 20px;
+}
+
+.heartOn {
+  fill: red;
+  position: relative;
+  top: 5px;
+  width: 20px;
+  animation-name: pulse;
+  animation-duration: 1.5s;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
 }

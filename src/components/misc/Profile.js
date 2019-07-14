@@ -22,22 +22,30 @@ class Profile extends React.Component {
             beats: beats.data.beats,
             username: beats.data.username,
             email: beats.data.email,
-            avatarURL: beats.data.avatarURL
+            avatarURL: beats.data.avatarURL,
           })
         }
       )
     } else {
-    const { id } = this.props.user
+    const { id, username, avatarURL, email } = this.props.user
     BeatService.userBeats(id).then(
       beats => this.setState({ 
-        beats: beats.data 
+        beats: beats.data,
+        username,
+        avatarURL,
+        email
       })
     )
     }
   }
 
   componentDidMount() {
+    console.log('hola')
     this.fetchBeats()
+  }
+
+  componentWillUnmount() {
+    console.log('adios')
   }
 
   logout = () => {
@@ -49,15 +57,22 @@ class Profile extends React.Component {
   render() {
     
     const { beats } = this.state
-    const { username, email, avatarURL } = this.props.user
+    const { username, email, avatarURL } = this.state
     const { id } = this.props.match.params
+    let checkUser = id
+    // if (checkUser === undefined) {
+    //   this.fetchBeats()
+    //   checkUser = true
+    //   console.log(checkUser)
+    // }
+    console.log('cuidado')
 
     return(
       <div className="Profile">
-        <img src={id ? this.state.avatarURL : avatarURL} alt=''/>
-        <h1>{id ? this.state.username : username}</h1>
-        <p>{id ? this.state.email : email}</p>
-        <button onClick={this.logout}>Logout</button>
+        <img src={avatarURL} alt=''/>
+        <h1>{username}</h1>
+        <p>{email}</p>
+        {!id && <button onClick={this.logout}>Logout</button>}
         {beats.map((beat, i) => (
           < Cards beats={beat} key={i} />
         ))}

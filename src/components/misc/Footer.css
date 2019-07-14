@@ -21,6 +21,10 @@
   align-items: center;
 }
 
+.NoFooter {
+  display: none;
+}
+
 /* svg {
   width: 100%;
 }

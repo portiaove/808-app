@@ -3,25 +3,31 @@ import { Link } from 'react-router-dom'
 import BeatService from '../../services/BeatService'
 import Moment from 'react-moment'
 import './Cards.css'
+import playIcon from '../../images/play.svg'
+import pauseIcon from '../../images/pause.svg'
 
 let start = null
 
 class Cards extends React.Component {
 
   state = {
-    counter: 0
+    counter: 0,
+    play: false
   }
 
+  
   handleStart = () => {
     const { bpm } = this.props.beats
+    const { play } = this.state
 
     if (!start) {
-      this.setState({ counter: 0 }, () => {
+      this.setState({ counter: 0, play: !play }, () => {
         start = setInterval(this.count, Math.round((60000/bpm)/4))
       })
     } else {
       clearInterval(start);
       start = null
+      this.setState({ play: !play })
     }
   }
 
@@ -41,30 +47,38 @@ class Cards extends React.Component {
     })
   }
 
+
+  fetchLikes = () => {
+    const { id } = this.props.beats
+    BeatService.checkIfLiked(id).then(
+      response => {this.setState({ liked: response.data })}
+    )
+  }
+
   handleLike = (e) => {
     e.preventDefault()
 
     const { id } = this.props.beats
       BeatService.likeBeat(id).then(
         () => {
-          console.log("like")
           this.props.fetchBeats()
+          this.fetchLikes()
         }
       )
   }
 
   componentDidMount() {
-
-    const { id } = this.props.beats
-    BeatService.checkIfLiked(id).then(
-      response => {this.setState({ liked: response.data })}
-    )
+    this.fetchLikes()
   }
   
+
   render() {
     const { bpm, name, createdAt }
     = this.props.beats
     const { username, avatarURL, id } = this.props.beats.owner
+    const { play } = this.state
+    const { liked } = this.state
+    
 
   return(
     <div className='Card'>
@@ -80,15 +94,21 @@ class Cards extends React.Component {
           </Link>
       }
         <div className="Info-Right">
-          <div>
-            <h3 className="title">{name ? name : 'LA GRAN ROLA'}</h3>
-            <button onClick={this.handleStart}>Play</button>
-          </div>{ avatarURL &&
-          <div className="body">
-            <h3>{this.props.beats.likes} likes</h3>
-            <button onClick={this.handleLike}>Like</button>
-            
-          </div>}
+          <div className="Info-Right-Up">
+            <h3>{name ? name : 'LA GRAN ROLA'}</h3>
+          </div>
+          <div className='Info-Right-Down'>
+            { avatarURL &&
+            <div>
+              {/* <button onClick={this.handleLike}>Like</button> */}
+            <svg  onClick={this.handleLike} className={liked ? 'heartOn' : 'heartOff'} viewBox="0 0 32 29.6">
+              <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+              c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+            </svg> 
+              <h5>{this.props.beats.likes} likes</h5>
+            </div>}
+            <img onClick={this.handleStart} className='Play-Pause-Btn' src={play ? pauseIcon : playIcon} />
+          </div>
         </div>
       </div>
       <div className="Card-Footer">

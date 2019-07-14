@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Drum from './Drum';
 import Step from './Step';
 import BeatService from '../../services/BeatService';
@@ -142,7 +142,7 @@ class MachineDrum extends React.Component {
     return (
       <div>
         <h1>This Is The Machine Drum</h1>
-        
+        < Link to='/home'>Go Back</Link>        
         <div className="d-flex justify-content-center ">
           < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Kick" name="kick"/>
           < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Snare" name="snare"/>

@@ -79,7 +79,6 @@ class MachineDrum extends React.Component {
 
   handleBpm = (e) => {
     let bpm = Number(e.target.value)
-    console.log(this.state.bpm)
 
     this.setState({
       bpm: bpm

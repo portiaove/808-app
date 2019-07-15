@@ -17,7 +17,8 @@ class Step extends React.Component {
   render() {
     const { onClick, activeMode, index, counter } = this.props
     const activeStep = index === counter
-    console.log('hola')
+    console.log(activeStep)
+
 
     return(
       <div className={activeStep ? 'Step-Active' : 'Step'}>

@@ -54,7 +54,7 @@ class Feed extends React.Component {
     }   
   }
 
-  
+
   render() { 
     const { beats, orderedBy } = this.state
     let orderedBeats = beats
@@ -73,7 +73,6 @@ class Feed extends React.Component {
       <div className="Feed">
 
         <header className="BtnOrders">
-          {/* <button onClick={this.handleOrder('bpm')}>Bpm</button> */}
           <button onClick={this.handleOrder} name='bpm'>Bpm</button>
           <button onClick={this.handleOrder} name='createdAt'>Recent</button>
           <button onClick={this.handleOrder} name='likes'>Popular</button>

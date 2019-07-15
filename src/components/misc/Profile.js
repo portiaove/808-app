@@ -15,6 +15,7 @@ class Profile extends React.Component {
   }
 
   fetchBeats = () => {
+
     if (this.props.match.params.id) {
       const { id } = this.props.match.params
       BeatService.getProfile(id).then(
@@ -41,12 +42,21 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    console.log('hola')
     this.fetchBeats()
   }
 
-  componentWillUnmount() {
-    console.log('adios')
+  componentWillReceiveProps(nextProps) {
+    if (this.state.email !== nextProps.user.email) {
+      const { id, username, avatarURL, email } = this.props.user
+      BeatService.userBeats(id).then(
+        beats => this.setState({ 
+          beats: beats.data,
+          username,
+          avatarURL,
+          email
+        })
+      )
+    }
   }
 
   logout = () => {

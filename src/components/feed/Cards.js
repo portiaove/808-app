@@ -72,7 +72,14 @@ class Cards extends React.Component {
       )
   }
 
+
   componentWillReceiveProps(nextProps) {
+
+    if (start) {
+      clearInterval(start);
+      start = null
+      this.setState({ play: !this.state.play })
+    }
 
     if (this.props.beats.id !== nextProps.beats.id) {
       const { id } = nextProps.beats

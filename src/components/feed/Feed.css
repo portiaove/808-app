@@ -1,6 +1,7 @@
 .Feed {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   /* padding-bottom: 18%; */
 }
 

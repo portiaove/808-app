@@ -5,6 +5,7 @@ class Drum extends React.Component {
 
   render() {
     const { activeDrum, name, onClick, title } = this.props
+    console.log('Drum Render')
   return(
     <div className="Instrument">
       <div className="mb-2" style={{background: `${(activeDrum === name) ? 'red' : 'black'}`, width: "30px", height: "5px"}}></div>

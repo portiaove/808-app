@@ -97,10 +97,10 @@ class MachineDrum extends React.Component {
     BeatService.saveBeat(data).then(
       (response) => {
         this.setState({ redirect: true })
-        console.log(response)
+        // console.log(response)
       },
       error => {
-        console.error(error)
+        // console.error(error)
       }
     )
   }
@@ -120,6 +120,8 @@ class MachineDrum extends React.Component {
   render() {
     const { activeDrum, nameIt, name } = this.state
     const { kick } = this.state.drums
+
+    console.log('808 Render')
 
     if (this.state.redirect) {
       return < Redirect to="/home" />

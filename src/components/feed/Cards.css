@@ -5,6 +5,7 @@
   background-color: bisque;
   align-items: center;
   border-radius: 5px;
+  max-width: 700px;
 }
 
 .Info {
@@ -22,28 +23,30 @@
   color: inherit;
   /* border: 1px solid red; */
   align-items: center;
-
-
 }
 
 .Card-Username {
-  /* border: 2px solid black; */
+  border: 2px solid black;
   flex: 1;
 }
 
-.Card-Image{ 
-  flex: 2;
-  max-width: 100%;
-  vertical-align: middle;
-  /* border: 1px solid green; */
-  flex-grow: 1;
-  border-radius: 45px;
-}
+
 
 .Image-Wrapper {
   border: 1px solid black;
   height: 100%;
+  flex: 2;
 }
+
+.Image-Wrapper img{ 
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  border: 1px solid green;
+  flex-grow: 1;
+  border-radius: 45px;
+}
+
 
 
 

@@ -70,13 +70,8 @@ class Profile extends React.Component {
     const { beats } = this.state
     const { username, email, avatarURL } = this.state
     const { id } = this.props.match.params
-    let checkUser = id
-    // if (checkUser === undefined) {
-    //   this.fetchBeats()
-    //   checkUser = true
-    //   console.log(checkUser)
-    // }
-    console.log('cuidado')
+
+    console.log('Profile Render')
 
     return(
       <div className="Profile">

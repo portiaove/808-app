@@ -59,6 +59,8 @@ class Feed extends React.Component {
     const { beats, orderedBy } = this.state
     let orderedBeats = beats
 
+    console.log('Feed Render')
+
     if (orderedBy.field === 'bpm') {
       orderedBeats = this.beatsBy(orderedBy.direction, 'bpm')
     }

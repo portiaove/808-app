@@ -39,7 +39,7 @@
 .Step-Active {
   border: 1px solid black;
   flex: 1;
-  background-color: burlywood;
+  /* background-color: burlywood; */
 }
 
 .Stp-Btn {
@@ -55,4 +55,33 @@
   border: 1px solid black;
   width: 100%;
   height: 90%;
+}
+
+
+.Kick {
+  background-color: blueviolet;
+}
+
+.Snare {
+  background-color: blue;
+}
+
+.ClHat {
+  background-color: lightgreen;
+}
+
+.OpHat {
+  background-color: lightseagreen;
+}
+
+.LoTom {
+  background-color: fuchsia;
+}
+
+.HiTom {
+  background-color: salmon;
+}
+
+.Black {
+  background-color: black;
 }

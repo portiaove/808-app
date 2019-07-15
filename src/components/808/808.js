@@ -130,6 +130,7 @@ class MachineDrum extends React.Component {
     const Steps = kick.map((el, index) => {
       return < Step 
         activeMode={this.state.drums[activeDrum][index]} 
+        activeDrum={activeDrum}
         counter={this.state.counter}
         kick={this.state.drums.kick[index]}
         snare={this.state.drums.snare[index]}

@@ -106,48 +106,50 @@ class Register extends React.Component {
     }
     
     return (
-      <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <div className='form-group'>
-          < AuthField 
-            label='Username'
-            name='username'
-            value={data.username}
-            touch={touch.username}
-            error={errors.username}
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-            validationClassName={this.getValidationClassName('username')}
-            errormessage='At least 4 characters'
-            />
+      <div className='Login-Container'>
+        <div className="Login">
+          <form onSubmit={this.handleSubmit}>
             < AuthField 
-            label='Email'
-            name='email'
-            value={data.email}
-            touch={touch.email}
-            error={errors.email}
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-            validationClassName={this.getValidationClassName('email')}
-            errormessage='Invalid email format'
-            />
-            < AuthField 
-            label='Password'
-            name='password'
-            value={data.password}
-            touch={touch.password}
-            error={errors.password}
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-            validationClassName={this.getValidationClassName('password')}
-            errormessage='At least 8 characters, 1 number, 1 upper and 1 lowercase'
-            />
-            <button type='submit'
-            className={`btn ${hasErrors ? 'btn-danger' : 'btn-success'}`}
-            disabled={hasErrors}>Submit
-            </button>
-          </div>
-        </form>
+              label='Username'
+              name='username'
+              value={data.username}
+              touch={touch.username}
+              error={errors.username}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              validationClassName={this.getValidationClassName('username')}
+              errormessage='At least 4 characters'
+              />
+              < AuthField 
+              label='Email'
+              name='email'
+              value={data.email}
+              touch={touch.email}
+              error={errors.email}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              validationClassName={this.getValidationClassName('email')}
+              errormessage='Invalid email format'
+              type='email'
+              />
+              < AuthField 
+              label='Password'
+              name='password'
+              value={data.password}
+              touch={touch.password}
+              error={errors.password}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              validationClassName={this.getValidationClassName('password')}
+              errormessage='At least 8 characters, 1 number, 1 upper and 1 lowercase'
+              type='password'
+              />
+              <button type='submit' className='btn-Submit'
+              // className={`btn ${hasErrors ? 'btn-danger' : 'btn-success'}`}
+              disabled={hasErrors}>Register
+              </button>
+          </form>
+        </div>
       </div>
     )
   }

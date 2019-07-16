@@ -11,7 +11,8 @@ const AuthField = (props) => {
     onChange,
     onBlur,
     validationClassName,
-    errormessage
+    errormessage,
+    type
    } = props
 
    const inputAttrs = {
@@ -21,13 +22,13 @@ const AuthField = (props) => {
      value,
      onChange,
      onBlur,
-     errormessage
+     errormessage,
+     type
    }
 
   return(
-    <div className='form-group'>
-      <label>{label}</label>
-      <input {...inputAttrs}/>
+    <div className='Inputs'>
+      <input placeholder={label} {...inputAttrs}/>
       {touch && !error && (
       <div className='valid-feedback'></div>)}
       {touch && error && (

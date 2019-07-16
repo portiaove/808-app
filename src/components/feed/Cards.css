@@ -6,36 +6,32 @@
   align-items: center;
   border-radius: 5px;
   max-width: 700px;
+  max-height: 175px;
 }
 
 .Info {
   display: flex;
   width: 100%;
+  /* max-height: 100%; */
+  flex: 2;
 }
 
 
 .Info-Left {
   flex: 1;
-  height: 100%;
+  /* height: 100%; */
   text-decoration: none;
   display: flex;
   flex-direction: column;
   color: inherit;
-  /* border: 1px solid red; */
+  border: 1px solid red;
   align-items: center;
 }
-
-.Card-Username {
-  border: 2px solid black;
-  flex: 1;
-}
-
-
 
 .Image-Wrapper {
   border: 1px solid black;
   height: 100%;
-  flex: 2;
+  /* flex: 2; */
 }
 
 .Image-Wrapper img{ 
@@ -46,6 +42,15 @@
   flex-grow: 1;
   border-radius: 45px;
 }
+
+.Card-Username {
+  border: 2px solid black;
+  flex: 1;
+}
+
+
+
+
 
 
 
@@ -93,8 +98,10 @@
 
 
 .Card-Footer {
+  border: 1px solid black;
+  flex: 1;
   width: 100%;
-  margin: 5px 0px;
+  /* margin: 5px 0px; */
   display: flex;
   justify-content: center;
 }

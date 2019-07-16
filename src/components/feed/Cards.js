@@ -107,7 +107,6 @@ class Cards extends React.Component {
     console.log('Cards Render')
 
   return(
-    <div className='Card-Container'>
       <div className='Card'>
         <div className="Info">
         { avatarURL &&
@@ -142,7 +141,6 @@ class Cards extends React.Component {
           <small className='bpm'>{bpm} bpm</small>
         </div>
       </div>
-    </div>
   )
 }
 }

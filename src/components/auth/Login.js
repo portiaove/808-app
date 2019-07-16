@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import AuthField from '../misc/AuthField';
 import AuthService from '../../services/AuthService';
 import { withAuthContext } from '../../contexts/AuthStore';
+import './Auth.css'
 const EMAIL_PATTERN = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const PASS_PATTERN = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
 
@@ -96,37 +97,39 @@ class Login extends React.Component {
     }
     
     return (
-      <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <div className='form-group'>
-            < AuthField 
-            label='Email'
-            name='email'
-            value={data.email}
-            touch={touch.email}
-            error={errors.email}
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-            validationClassName={this.getValidationClassName('email')}
-            errormessage='Invalid email format'
-            />
-            < AuthField 
-            label='Password'
-            name='password'
-            value={data.password}
-            touch={touch.password}
-            error={errors.password}
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-            validationClassName={this.getValidationClassName('password')}
-            errormessage='At least 8 characters, 1 number, 1 upper and 1 lowercase'
-            />
-            <button type='submit'
-            className={`btn ${hasErrors ? 'btn-danger' : 'btn-success'}`}
-            disabled={hasErrors}>Submit
-            </button>
-          </div>
-        </form>
+      <div className='Login-Container'>
+        <div className="Login">
+          <form onSubmit={this.handleSubmit}>
+              < AuthField 
+              label='Email'
+              name='email'
+              value={data.email}
+              touch={touch.email}
+              error={errors.email}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              validationClassName={this.getValidationClassName('email')}
+              errormessage='Invalid email format'
+              type='email'
+              />
+              < AuthField 
+              label='Password'
+              name='password'
+              value={data.password}
+              touch={touch.password}
+              error={errors.password}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              validationClassName={this.getValidationClassName('password')}
+              errormessage='At least 8 characters, 1 number, 1 upper and 1 lowercase'
+              type='password'
+              />
+              <button type='submit' className='btn-Submit'
+              // className={`btn ${hasErrors ? 'btn-danger' : 'btn-success'}`}
+              disabled={hasErrors}>Log In
+              </button>
+          </form>
+        </div>
       </div>
     )
   }

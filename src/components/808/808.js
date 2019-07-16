@@ -105,8 +105,14 @@ class MachineDrum extends React.Component {
     )
   }
 
+  closeNameBeat = () => {
+    const { nameIt } = this.state
+    this.setState({ nameIt: !nameIt})
+  }
+
   nameBeat = (e) => {
     e.preventDefault()
+    console.log(e.target.style.display)
     clearInterval(start)
     this.setState({ nameIt: !this.state.nameIt})
   }
@@ -161,12 +167,16 @@ class MachineDrum extends React.Component {
           </form>
           <button onClick={this.handleStart}>Start</button>      {/*ALTERNAR START STOP*/}
           {
-            nameIt && <div>
-              <form>
-                <label>Name it!</label>
-                <input onChange={this.handleName} name='name' value={name}></input>
-                <button onClick={this.saveBeat}>Save</button>
-              </form>
+            nameIt && 
+            <div className="modal">
+              <div className="modal-content">
+                <span onClick={this.closeNameBeat} className="close-btn">&times;</span>
+                <form>
+                  <label>Name it!</label>
+                  <input onChange={this.handleName} name='name' value={name}></input>
+                  <button onClick={this.saveBeat}>Save</button>
+                </form>
+              </div>
             </div>
           }
           <button onClick={this.nameBeat}>Save</button>

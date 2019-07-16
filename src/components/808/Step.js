@@ -29,7 +29,7 @@ class Step extends React.Component {
     // console.log(counter)
     // console.log(activeStep)
     console.log('Step Render')
-    console.log(activeMode)
+    // console.log(activeMode)
 
 
     return(

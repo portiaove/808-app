@@ -27,19 +27,26 @@ class Cards extends React.Component {
     this.fetchLikes()
   }
 
+  componentWillUnmount() {
+    console.log('unmount')
+  }
+
   
   handleStart = () => {
     const { bpm } = this.props.beats
     const { play } = this.state
+    console.log('start')
 
     if (!start) {
       this.setState({ counter: 0, play: !play }, () => {
         start = setInterval(this.count, Math.round((60000/bpm)/4))
+        console.log('on')
       })
     } else {
       clearInterval(start);
       start = null
       this.setState({ play: !play })
+      console.log('off')
     }
   }
 

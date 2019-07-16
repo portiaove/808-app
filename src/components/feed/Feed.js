@@ -8,8 +8,8 @@ class Feed extends React.Component {
   state = {
     beats: [],
     orderedBy: {
-      field: null,
-      direction: null
+      field: 'createdAt',
+      direction: 'asc'
     }
   }
 

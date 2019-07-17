@@ -80,7 +80,7 @@ class Register extends React.Component {
         console.log(this.props)
         this.setState({ redirect: true })
         console.log(this.props)
-        this.props.onUserChange(response.data)
+        //this.props.onUserChange(response.data)
       },
       error => {
         this.setState({

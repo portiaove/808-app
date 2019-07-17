@@ -11,8 +11,6 @@ import PrivateRoute from '../guards/PrivateRoute'
 
 function App(props) {
 
-  console.log(props)
-
   return (
       <main className="App">
         <Switch>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Cards from '../feed/Cards';
+import ProfileCards from './ProfileCards'
 import { withAuthContext } from '../../contexts/AuthStore'
 import BeatService from '../../services/BeatService'
 import AuthService from '../../services/AuthService'
@@ -19,7 +20,7 @@ class Profile extends React.Component {
     if (this.props.match.params.id) {
       const { id } = this.props.match.params
       BeatService.getProfile(id).then(
-        beats => {
+        beats => { 
           this.setState({
             beats: beats.data.beats,
             username: beats.data.username,
@@ -67,10 +68,10 @@ class Profile extends React.Component {
 
   render() {
     
-    const { beats } = this.state
-    const { username, email, avatarURL } = this.state
+    const { username, email, avatarURL, beats } = this.state
     const { id } = this.props.match.params
-
+    // console.log(id)
+    // console.log(beats)
     console.log('Profile Render')
 
     return(
@@ -86,7 +87,7 @@ class Profile extends React.Component {
           </div>
         </header>
         {beats.map((beat, i) => (
-          < Cards beats={beat} key={i} />
+          < ProfileCards beats={beat} key={i} />
         ))}
       </div>
     )

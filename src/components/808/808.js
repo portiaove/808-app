@@ -105,7 +105,14 @@ class MachineDrum extends React.Component {
     )
   }
 
-  closeNameBeat = () => {
+  closeNameBeatOutside = ({ target }) => {
+    if (!this.wrapperRef.contains(target)) {
+      const { nameIt } = this.state
+      this.setState({ nameIt: !nameIt})
+    }
+  }
+
+  closeNameBeat = (e) => {
     const { nameIt } = this.state
     this.setState({ nameIt: !nameIt})
   }
@@ -150,8 +157,6 @@ class MachineDrum extends React.Component {
 
     return (
       <div className='Machine-Drum'>
-        <h1>This Is The Machine Drum</h1>
-        < Link to='/home'>Go Back</Link>        
         <div className="Instruments">
           < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Kick" name="kick"/>
           < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Snare" name="snare"/>
@@ -168,8 +173,8 @@ class MachineDrum extends React.Component {
           <button onClick={this.handleStart}>Start</button>      {/*ALTERNAR START STOP*/}
           {
             nameIt && 
-            <div className="modal">
-              <div className="modal-content">
+            <div className="modal" onClick={this.closeNameBeatOutside}>
+              <div className="modal-content" ref={(node) => this.wrapperRef = node}>
                 <span onClick={this.closeNameBeat} className="close-btn">&times;</span>
                 <form className='Inputs'>
                   <label>Name it!</label>
@@ -180,6 +185,7 @@ class MachineDrum extends React.Component {
             </div>
           }
           <button onClick={this.nameBeat}>Save</button>
+          < Link to='/home'>Go Back</Link>        
         </div>
 
         <div className="Steps">

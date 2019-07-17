@@ -1,12 +1,22 @@
 .Card {
   display: flex;
   flex-direction: column;
-  margin: 10px 0px;
+  margin-bottom: 5%;
+  margin-top: 5%;
   background-color: bisque;
   align-items: center;
   border-radius: 5px;
-  max-width: 700px;
-  max-height: 175px;
+
+
+}
+.Card-Image{
+  width: 50%;
+  padding-top: 18%;
+}
+h5{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  margin-top: 10px;
 }
 
 .Info {
@@ -24,12 +34,12 @@
   display: flex;
   flex-direction: column;
   color: inherit;
-  border: 1px solid red;
+  
   align-items: center;
 }
 
 .Image-Wrapper {
-  border: 1px solid black;
+  
   height: 100%;
   /* flex: 2; */
 }
@@ -38,13 +48,11 @@
   height: auto;
   max-width: 100%;
   vertical-align: middle;
-  border: 1px solid green;
   flex-grow: 1;
   border-radius: 45px;
 }
 
 .Card-Username {
-  border: 2px solid black;
   flex: 1;
 }
 
@@ -59,11 +67,9 @@
   display: flex;
   flex: 2;
   flex-direction: column;
-  border: 1px solid black;
 }
 
 .Info-Right-Up {
-  border: 1px solid black;
   flex: 2;
   display: flex;
   justify-content: center;
@@ -72,7 +78,6 @@
 }
 
 .Info-Right-Down {
-  border: 1px solid black;
   flex: 1;
   display: flex;
   justify-content: space-around;
@@ -82,7 +87,6 @@
 .Info-Right-Down div{
   
   display: flex;
-  border: 1px solid black;
   flex-direction: column;
   align-items: center;
   
@@ -91,6 +95,7 @@
 .Play-Pause-Btn {
   width: 40px;
   height: 40px;
+  margin-bottom: 10%;
 }
 
 
@@ -98,10 +103,8 @@
 
 
 .Card-Footer {
-  border: 1px solid black;
   flex: 1;
   width: 100%;
-  /* margin: 5px 0px; */
   display: flex;
   justify-content: center;
 }
@@ -112,7 +115,10 @@
 
 .bpm {
   flex: 2;
+  height: 5vh
 }
+
+
 
 
 .heartOff {

@@ -1,7 +1,10 @@
-.Machine {
+.Machine-Drum {
   display: flex;
   flex-direction: column;
   border: 1px solid black;
+  height: 100%;
+  min-height: 100%;
+  margin-top: 15px;
 }
 
 .Instruments {
@@ -9,6 +12,7 @@
   justify-content: space-around;
   align-items: center;
   border: 1px solid black;
+  height: 20vh;
 }
 
 .Instrument {
@@ -22,19 +26,24 @@
 .Controllers {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   border: 1px solid black;
+  height: 34vh;}
 
+.Controllers *{
+  border: 1px solid black;
+  text-decoration: none;
+  color: inherit;
 }
 
 .Steps {
   border: 1px solid black;
   display: flex;
-}
+  height: 35vh;}
 
 .Step {
   flex: 1;
   border-radius: 10px; 
-
 }
 
 .Step-Active {
@@ -67,42 +76,34 @@
   height: 9px;
   width: 9px;
   border-radius: 50%; 
-
 }
 
 
+
+/* STEP STYLES */
 .Kick {
   background-color: blueviolet;
 }
-
 .Snare {
   background-color: blue;
 }
-
 .ClHat {
   background-color: lightgreen;
 }
-
 .OpHat {
   background-color: lightseagreen;
 }
-
 .LoTom {
   background-color: fuchsia;
 }
-
 .HiTom {
   background-color: salmon;
 }
-
 .Black {
   background-color: black;
 }
 
-
-
 /* NAME IT MODAL BOX */
-
 .modal {
   display: flex;
   justify-content: center;

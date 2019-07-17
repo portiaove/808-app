@@ -40,7 +40,7 @@ class Step extends React.Component {
             <p>{index+1}</p>
           </div>
         </button>
-        {activeStep && <p><strong>O</strong></p>}
+        {/* {activeStep && <p><strong>O</strong></p>} */}
       </div>
     )
   }

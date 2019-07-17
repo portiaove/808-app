@@ -32,14 +32,13 @@
 }
 
 .Step {
-  border: 1px solid black;
   flex: 1;
+  border-radius: 10px; 
+
 }
 
 .Step-Active {
-  border: 1px solid black;
   flex: 1;
-  /* background-color: burlywood; */
 }
 
 .Stp-Btn {
@@ -49,12 +48,26 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: transparent;
+  border: 1px solid #1b864f;
+  border-radius: 10px; 
 }
 
 .Little-Step {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 100%;
   height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Active-Step{
+  height: 9px;
+  width: 9px;
+  border-radius: 50%; 
+
 }
 
 
@@ -91,9 +104,11 @@
 /* NAME IT MODAL BOX */
 
 .modal {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed; 
-  padding-top: 50px;
+  /* padding-top: 50px; */
   left: 0; 
   top: 0;
   width: 100%;
@@ -103,12 +118,12 @@
   border: 25px;
 }
 .modal-content {
-  position: relative; 
+  /* position: relative;  */
   border-radius: 25px;
   background-color: white;
   padding: 20px; 
   margin: auto; 
-  top: 25%;
+  /* top: 25%; */
   width: 50%;  
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;

@@ -33,10 +33,10 @@ class Step extends React.Component {
 
 
     return(
-      <div className={activeMode ? this.handleStyle(activeDrum) : 'Step'}>
+      <div className={`Step ${activeMode && this.handleStyle(activeDrum)}`}>
         <button onClick={onClick} className='Stp-Btn'>
           <div className='Little-Step'>
-            <div style={{background: `${activeStep ? 'red' : 'black'}`, height: '9px', width: '9px'}}></div>
+            <div className='Active-Step' style={{background: `${activeStep ? 'red' : 'black'}`}}></div>
             <p>{index+1}</p>
           </div>
         </button>

@@ -171,7 +171,7 @@ class MachineDrum extends React.Component {
             <div className="modal">
               <div className="modal-content">
                 <span onClick={this.closeNameBeat} className="close-btn">&times;</span>
-                <form>
+                <form className='Inputs'>
                   <label>Name it!</label>
                   <input onChange={this.handleName} name='name' value={name}></input>
                   <button onClick={this.saveBeat}>Save</button>

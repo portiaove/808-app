@@ -30,6 +30,7 @@ class Feed extends React.Component {
     const field = e.target.name
     const { direction } =this.state.orderedBy
     if (direction !== 'asc') {
+      console.log('ascen')
       this.setState({
         orderedBy: {
           field,
@@ -37,6 +38,7 @@ class Feed extends React.Component {
         }
       })
     } else {
+      console.log('descen')
       this.setState({
         orderedBy: {
           field,
@@ -60,6 +62,7 @@ class Feed extends React.Component {
     let orderedBeats = beats
 
     console.log('Feed Render')
+    console.log(orderedBy)
 
     if (orderedBy.field === 'bpm') {
       orderedBeats = this.beatsBy(orderedBy.direction, 'bpm')
@@ -75,9 +78,9 @@ class Feed extends React.Component {
       <div className="Feed">
 
         <header className="BtnOrders">
-          <button onClick={this.handleOrder} name='bpm'>Bpm</button>
-          <button onClick={this.handleOrder} name='createdAt'>Recent</button>
-          <button onClick={this.handleOrder} name='likes'>Popular</button>
+          <button onClick={this.handleOrder} name='bpm'><span>Bpm</span></button>
+          <button onClick={this.handleOrder} name='createdAt'><span>Recent</span></button>
+          <button onClick={this.handleOrder} name='likes'><span>Popular</span></button>
         </header>
         
         {orderedBeats.map((beat, i) => (

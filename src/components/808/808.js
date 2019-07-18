@@ -65,12 +65,12 @@ class MachineDrum extends React.Component {
   count = () => {
     const { counter, drums } = this.state
     
-    drums.kick[counter] && new Audio('kick.mp3').play()
-    drums.snare[counter] && new Audio('snare.mp3').play()
-    drums.clHat[counter] && new Audio('clHat.mp3').play()
-    drums.opHat[counter] && new Audio('opHat.mp3').play()
-    drums.loTom[counter] && new Audio('loTom.mp3').play()
-    drums.hiTom[counter] && new Audio('hiTom.mp3').play()
+    drums.kick[counter] && new Audio('/kick.mp3').play()
+    drums.snare[counter] && new Audio('/snare.mp3').play()
+    drums.clHat[counter] && new Audio('/clHat.mp3').play()
+    drums.opHat[counter] && new Audio('/opHat.mp3').play()
+    drums.loTom[counter] && new Audio('/loTom.mp3').play()
+    drums.hiTom[counter] && new Audio('/hiTom.mp3').play()
 
     this.setState({
       counter: counter > 14 ? 0 : counter + 1

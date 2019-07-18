@@ -10,13 +10,11 @@
   align-items: center;
   justify-content: center;
   min-width: 0;
-  border: 1px solid black;
 }
 
 .Profile-Image {
   height: 150px;
   width: 150px;
-  border: 1px solid black;
   /* display: flex; */
   /* justify-content: center; */
   /* align-items: center; */
@@ -35,11 +33,9 @@
 }
 
 .Profile-Header h1{
-  border: 1px solid black;
 
 }
 
 .Profile-Header p{
-  border: 1px solid black;
 
 }

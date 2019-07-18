@@ -51,12 +51,12 @@ class Cards extends React.Component {
     const { counter } = this.state
     console.log(this.props.beats)
 
-    kick[counter] && new Audio('kick.mp3').play()
-    snare[counter] && new Audio('snare.mp3').play()
-    clHat[counter] && new Audio('clHat.mp3').play()
-    opHat[counter] && new Audio('opHat.mp3').play()
-    loTom[counter] && new Audio('loTom.mp3').play()
-    hiTom[counter] && new Audio('hiTom.mp3').play()
+    kick[counter] && new Audio('/kick.mp3').play()
+    snare[counter] && new Audio('/snare.mp3').play()
+    clHat[counter] && new Audio('/clHat.mp3').play()
+    opHat[counter] && new Audio('/opHat.mp3').play()
+    loTom[counter] && new Audio('/loTom.mp3').play()
+    hiTom[counter] && new Audio('/hiTom.mp3').play()
 
     this.setState({
       counter: counter > 14 ? 0 : counter + 1

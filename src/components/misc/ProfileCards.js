@@ -94,7 +94,7 @@ let start = null
 class ProfileCards extends React.Component {
 
   handlePlay = () => {
-    const kick = new Audio('kick.mp3').play()
+    const kick = new Audio('/kick.mp3').play()
     if (kick !== undefined) {
       kick.then((x) => {
         console.log(`everything went right: ${x}`)
@@ -102,8 +102,9 @@ class ProfileCards extends React.Component {
     }
 
 
+    
 
-    // console.log(kick)
+    console.log(kick)
     // console.log(kick.play())
     // kick.play()
   }

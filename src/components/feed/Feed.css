@@ -7,9 +7,27 @@
 }
 
 .BtnOrders {
-  background-color: yellowgreen;
   display: flex;
   justify-content: space-around;
   margin: 10px 0px;
 }
 
+.BtnOrders button{
+  width: 100%;
+  padding: 7px 0px;
+  background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
+	border-radius: 40px;
+  box-sizing: border-box;
+  color: #00a84f;
+  position: relative;
+}
+
+.BtnOrders button span{
+  background: #e7e8e9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 40px;
+}

@@ -94,8 +94,8 @@ class Profile extends React.Component {
             {!id && <button onClick={this.logout}>Logout</button>}
           </div>
         </header>
-        {!id && ProfileBeats}
-        {id && ProfileBeats}
+        {!id && UserBeats}
+        {id && UserBeats}
       </div>
     )
   } 

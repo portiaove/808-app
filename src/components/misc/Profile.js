@@ -74,6 +74,14 @@ class Profile extends React.Component {
     // console.log(beats)
     console.log('Profile Render')
 
+    const UserBeats = beats.map((beat, i) => (
+      < Cards beats={beat} key={i} />
+    ))
+
+    const ProfileBeats = beats.map((beat, i) => (
+      < ProfileCards beats={beat} key={i} />
+    ))
+
     return(
       <div className="Profile">
         <header className='Profile-Header'>
@@ -86,9 +94,8 @@ class Profile extends React.Component {
             {!id && <button onClick={this.logout}>Logout</button>}
           </div>
         </header>
-        {beats.map((beat, i) => (
-          < ProfileCards beats={beat} key={i} />
-        ))}
+        {!id && UserBeats}
+        {id && ProfileBeats}
       </div>
     )
   } 

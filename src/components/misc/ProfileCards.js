@@ -16,21 +16,27 @@ class ProfileCards extends React.Component {
 
   
   handleStart = () => {
-    const { bpm } = this.props.beats
-    const { play } = this.state
-    console.log('start')
 
-    if (!start) {
-      this.setState({ counter: 0, play: !play }, () => {
-        start = setInterval(this.count, Math.round((60000/bpm)/4))
-        console.log('on')
-      })
-    } else {
-      clearInterval(start);
-      start = null
-      this.setState({ play: !play })
-      console.log('off')
+    const kick = new Audio('kick.mp3').play()
+    console.log(kick)
+    if (kick !== undefined) {
+      kick.then(() => console.log('playing?'))
     }
+    // const { bpm } = this.props.beats
+    // const { play } = this.state
+    // console.log('start')
+
+    // if (!start) {
+    //   this.setState({ counter: 0, play: !play }, () => {
+    //     start = setInterval(this.count, Math.round((60000/bpm)/4))
+    //     console.log('on')
+    //   })
+    // } else {
+    //   clearInterval(start);
+    //   start = null
+    //   this.setState({ play: !play })
+    //   console.log('off')
+    // }
   }
 
   count = () => {
@@ -56,9 +62,9 @@ class ProfileCards extends React.Component {
     const { username, avatarURL, id } = this.props.beats.owner
     const { play } = this.state
     const { liked } = this.state
-    console.log(this.props)
+    console.log(this.props.beats)
     
-    console.log('Cards Render')
+    console.log('ProfileCards Render')
 
   return(
       <div className='Card'>
@@ -74,7 +80,7 @@ class ProfileCards extends React.Component {
         </div>
         <div className="Card-Footer">
           <small className="createdAt"><Moment fromNow>{createdAt}</Moment></small>
-          <small className='bpm'>{bpm} bpm</small>
+          <small className='bpm'>{bpm} bpmm</small>
         </div>
       </div>
   )

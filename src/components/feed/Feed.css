@@ -15,7 +15,7 @@
 .BtnOrders button{
   width: 100%;
   padding: 7px 0px;
-  background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
+  /* background-image: blue; */
 	border-radius: 40px;
   box-sizing: border-box;
   color: #00a84f;

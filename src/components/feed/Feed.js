@@ -78,9 +78,9 @@ class Feed extends React.Component {
       <div className="Feed">
 
         <header className="BtnOrders">
-          <button onClick={this.handleOrder} name='bpm'><span>Bpm</span></button>
-          <button onClick={this.handleOrder} name='createdAt'><span>Recent</span></button>
-          <button onClick={this.handleOrder} name='likes'><span>Popular</span></button>
+          <button onClick={this.handleOrder} name='bpm'>Bpm</button>
+          <button onClick={this.handleOrder} name='createdAt'>Recent</button>
+          <button onClick={this.handleOrder} name='likes'>Popular</button>
         </header>
         
         {orderedBeats.map((beat, i) => (

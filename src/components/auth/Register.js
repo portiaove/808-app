@@ -101,6 +101,10 @@ class Register extends React.Component {
     const { data, errors, touch } = this.state
     const hasErrors = Object.values(errors).some(el => el === true )
 
+    if (this.props.isAuthenticated()) {
+      return < Redirect to='/home' />
+    }
+
     if (this.state.redirect) {
       return < Redirect to="/login" />
     }

@@ -26,13 +26,9 @@ class Cards extends React.Component {
   componentDidMount() {
     this.fetchLikes()
   }
-
-  componentWillUnmount() {
-    console.log('unmount')
-  }
-
   
   handleStart = () => {
+
     const { bpm } = this.props.beats
     const { play } = this.state
     console.log('start')
@@ -53,6 +49,7 @@ class Cards extends React.Component {
   count = () => {
     const { clHat, opHat, loTom, hiTom, kick, snare } = this.props.beats
     const { counter } = this.state
+    console.log(this.props.beats)
 
     kick[counter] && new Audio('kick.mp3').play()
     snare[counter] && new Audio('snare.mp3').play()
@@ -132,7 +129,7 @@ class Cards extends React.Component {
                 </svg> 
                 <h5>{this.props.beats.likes} likes</h5>
               </div>}
-              <img onClick={this.handleStart} className='Play-Pause-Btn' src={play ? pauseIcon : playIcon} />
+              <img onClick={this.handleStart} className='Play-Pause-Btn' src={play ? pauseIcon : playIcon} alt='playBtn' />
             </div>
           </div>
         </div>

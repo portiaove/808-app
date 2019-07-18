@@ -119,9 +119,9 @@ class MachineDrum extends React.Component {
 
   nameBeat = (e) => {
     e.preventDefault()
-    console.log(e.target.style.display)
+    const { nameIt } = this.state
     clearInterval(start)
-    this.setState({ nameIt: !this.state.nameIt})
+    this.setState({ nameIt: !nameIt})
   }
 
   handleName = (e) => {

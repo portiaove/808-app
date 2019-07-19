@@ -4,6 +4,9 @@ import Drum from './Drum';
 import Step from './Step';
 import BeatService from '../../services/BeatService';
 import './808.css'
+import playIcon from '../../images/play.svg'
+import pauseIcon from '../../images/pause.svg'
+
 
 
 const EMPTY_BEAT = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
@@ -26,7 +29,8 @@ class MachineDrum extends React.Component {
     counter: 0,
     name: '',
     nameIt: false,
-    redirect: false
+    redirect: false,
+    play: false
   }
 
   handleActiveDrum = (e) => {
@@ -51,15 +55,16 @@ class MachineDrum extends React.Component {
   }
   
   handleStart = () => {
-    const { bpm } = this.state
+    const { bpm, play } = this.state
 
     if (!start) {
-      this.setState({ counter: 0 }, () => {
+      this.setState({ counter: 0, play: true }, () => {
         start = setInterval(this.count, Math.round((60000/bpm)/4)) //NOT WORKING
       })
     } else {
       clearInterval(start);
       start = null;
+      this.setState({ play: false })
     }
   }
 
@@ -110,20 +115,20 @@ class MachineDrum extends React.Component {
   closeNameBeatOutside = ({ target }) => {
     if (!this.wrapperRef.contains(target)) {
       const { nameIt } = this.state
-      this.setState({ nameIt: !nameIt})
+      this.setState({ nameIt: !nameIt, play: false })
     }
   }
 
   closeNameBeat = (e) => {
     const { nameIt } = this.state
-    this.setState({ nameIt: !nameIt})
+    this.setState({ nameIt: !nameIt, play: false })
   }
 
   nameBeat = (e) => {
     e.preventDefault()
-    const { nameIt } = this.state
+    const { nameIt, play } = this.state
     clearInterval(start)
-    this.setState({ nameIt: !nameIt})
+    this.setState({ nameIt: !nameIt, play: false })
   }
 
   handleName = (e) => {
@@ -133,7 +138,7 @@ class MachineDrum extends React.Component {
 
 
   render() {
-    const { activeDrum, nameIt, name } = this.state
+    const { activeDrum, nameIt, name, play } = this.state
     const { kick } = this.state.drums
 
     // console.log('808 Render')
@@ -168,11 +173,18 @@ class MachineDrum extends React.Component {
           < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Hi Tom" name="hiTom"/>
         </div>
         <div className='Controllers'>
-          <h3>{this.state.bpm}</h3><h3>bpm</h3>
-          <form className='Input-Form'>
-            <input onChange={this.handleBpm} value={this.state.bpm} type="range" name="bpm" min="56" max="240" step="0.5"/>
-          </form>
-          <button onClick={this.handleStart}>Start</button>      {/*ALTERNAR START STOP*/}
+          <div className='Bpm-Controllers'>
+            <div className='Bpm-Info'>
+              <h3>{this.state.bpm}</h3><h3>bpm</h3>
+            </div>
+            <form className='Input-Form'>
+              <input onChange={this.handleBpm} value={this.state.bpm} type="range" name="bpm" min="56" max="240" step="0.5"/>
+            </form>
+          </div>
+
+          {/* <button onClick={this.handleStart}>Start</button>   */}
+
+          <img onClick={this.handleStart} className='Play-Pause-Btn' src={play ? pauseIcon : playIcon} alt='playBtn' />
 
           {
             nameIt && 
@@ -187,6 +199,7 @@ class MachineDrum extends React.Component {
               </div>
             </div>
           }
+
           <button onClick={this.nameBeat}>Save</button>
           < Link to='/home'>Go Back</Link>        
         </div>

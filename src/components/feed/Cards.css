@@ -1,9 +1,9 @@
 .Card {
   display: flex;
   flex-direction: column;
-  margin-bottom: 5%;
+  margin-bottom: 3%;
   margin-top: 5%;
-  background-color: #f1eded;
+  background-color: #e8e7e1;
   align-items: center;
   border-radius: 5px;
 

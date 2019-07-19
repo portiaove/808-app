@@ -1,6 +1,5 @@
 import React from 'react';
 import Cards from '../feed/Cards';
-import ProfileCards from './ProfileCards'
 import { withAuthContext } from '../../contexts/AuthStore'
 import BeatService from '../../services/BeatService'
 import AuthService from '../../services/AuthService'
@@ -70,16 +69,11 @@ class Profile extends React.Component {
     
     const { username, email, avatarURL, beats } = this.state
     const { id } = this.props.match.params
-    // console.log(id)
-    // console.log(beats)
+
     console.log('Profile Render')
 
     const UserBeats = beats.map((beat, i) => (
       < Cards beats={beat} key={i} />
-    ))
-
-    const ProfileBeats = beats.map((beat, i) => (
-      < ProfileCards beats={beat} key={i} />
     ))
 
     return(
@@ -94,8 +88,9 @@ class Profile extends React.Component {
             {!id && <button onClick={this.logout}>Logout</button>}
           </div>
         </header>
-        {!id && UserBeats}
-        {id && UserBeats}
+
+        {UserBeats}
+
       </div>
     )
   } 

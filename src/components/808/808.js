@@ -31,6 +31,7 @@ class MachineDrum extends React.Component {
 
   handleActiveDrum = (e) => {
     const activeDrum = e.target.name
+    console.log(e.target.name)
     this.setState({
       activeDrum
     })
@@ -79,13 +80,17 @@ class MachineDrum extends React.Component {
 
   handleBpm = (e) => {
     let bpm = Number(e.target.value)
-
+    if (!start) {
+      this.setState({
+        bpm: bpm
+      })
+    } else {
     this.setState({
       bpm: bpm
     }, () => {
       clearInterval(start)
       start = setInterval(this.count, Math.round((60000/bpm)/4))
-    })
+    })}
   }
 
   saveBeat = (e) => {
@@ -97,11 +102,8 @@ class MachineDrum extends React.Component {
     BeatService.saveBeat(data).then(
       (response) => {
         this.setState({ redirect: true })
-        // console.log(response)
       },
-      error => {
-        // console.error(error)
-      }
+      error => {}
     )
   }
 
@@ -134,7 +136,7 @@ class MachineDrum extends React.Component {
     const { activeDrum, nameIt, name } = this.state
     const { kick } = this.state.drums
 
-    console.log('808 Render')
+    // console.log('808 Render')
 
     if (this.state.redirect) {
       return < Redirect to="/home" />
@@ -167,10 +169,11 @@ class MachineDrum extends React.Component {
         </div>
         <div className='Controllers'>
           <h3>{this.state.bpm}</h3><h3>bpm</h3>
-          <form>
+          <form className='Input-Form'>
             <input onChange={this.handleBpm} value={this.state.bpm} type="range" name="bpm" min="56" max="240" step="0.5"/>
           </form>
           <button onClick={this.handleStart}>Start</button>      {/*ALTERNAR START STOP*/}
+
           {
             nameIt && 
             <div className="modal" onClick={this.closeNameBeatOutside}>

@@ -30,7 +30,6 @@ class Feed extends React.Component {
     const field = e.target.name
     const { direction } =this.state.orderedBy
     if (direction !== 'asc') {
-      console.log('ascen')
       this.setState({
         orderedBy: {
           field,
@@ -38,7 +37,6 @@ class Feed extends React.Component {
         }
       })
     } else {
-      console.log('descen')
       this.setState({
         orderedBy: {
           field,
@@ -62,7 +60,6 @@ class Feed extends React.Component {
     let orderedBeats = beats
 
     console.log('Feed Render')
-    console.log(orderedBy)
 
     if (orderedBy.field === 'bpm') {
       orderedBeats = this.beatsBy(orderedBy.direction, 'bpm')

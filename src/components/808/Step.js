@@ -26,10 +26,8 @@ class Step extends React.Component {
   render() {
     const { onClick, activeMode, index, counter, activeDrum } = this.props
     const activeStep = index === counter
-    // console.log(counter)
-    // console.log(activeStep)
-    console.log('Step Render')
-    // console.log(activeMode)
+
+    // console.log('Step Render')
 
 
     return(
@@ -40,7 +38,6 @@ class Step extends React.Component {
             <p>{index+1}</p>
           </div>
         </button>
-        {/* {activeStep && <p><strong>O</strong></p>} */}
       </div>
     )
   }

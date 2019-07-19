@@ -31,25 +31,21 @@ class Cards extends React.Component {
 
     const { bpm } = this.props.beats
     const { play } = this.state
-    console.log('start')
 
     if (!start) {
       this.setState({ counter: 0, play: !play }, () => {
         start = setInterval(this.count, Math.round((60000/bpm)/4))
-        console.log('on')
       })
     } else {
       clearInterval(start);
       start = null
       this.setState({ play: !play })
-      console.log('off')
     }
   }
 
   count = () => {
     const { clHat, opHat, loTom, hiTom, kick, snare } = this.props.beats
     const { counter } = this.state
-    console.log(this.props.beats)
 
     kick[counter] && new Audio('/kick.mp3').play()
     snare[counter] && new Audio('/snare.mp3').play()

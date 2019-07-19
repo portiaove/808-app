@@ -77,9 +77,7 @@ class Register extends React.Component {
 
     AuthService.register(this.state.data).then(
       (response) => {
-        console.log(this.props)
         this.setState({ redirect: true })
-        console.log(this.props)
         //this.props.onUserChange(response.data)
       },
       error => {

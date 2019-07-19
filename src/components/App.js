@@ -6,6 +6,7 @@ import Footer from './misc/Footer'
 import MachineDrum from './808/808'
 import Feed from './feed/Feed'
 import Profile from './misc/Profile'
+import Home from './misc/Home'
 import { withAuthContext } from '../contexts/AuthStore'
 import PrivateRoute from '../guards/PrivateRoute'
 
@@ -20,6 +21,7 @@ function App(props) {
           <PrivateRoute exact path='/profile' component={Profile} />
           <PrivateRoute exact path='/profile/:id' component={Profile} />
           <Route exact path='/808' component={MachineDrum} />
+          <Route path='/' component={Home} />
         </Switch>
           {props.isAuthenticated() && <Footer />}
       </main>

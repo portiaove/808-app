@@ -21,5 +21,37 @@ body {
   }
 }
 
+.Home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: #e8e7e1;
+  /* margin: 0 auto 10px; */
+  border-radius: 8px;
+  margin: 0px 50px;
+}
 
+.btn-Link {
+  height: 44px;
+  width: 100%;
+  margin: 10px 0px;
+  color: #181615; 
+  font-size: 16px;
+  background: transparent;
+  border: 2px solid #181615;
+  border-radius: 25px; 
+  text-decoration: none;
+}
 
+.Link {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+}
+
+::placeholder {
+  color: #e8e7e1;
+  opacity: 1; /* Firefox */
+}

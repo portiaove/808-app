@@ -6,7 +6,7 @@
   background-color: #e8e7e1;
   align-items: center;
   border-radius: 5px;
-
+  box-shadow: 0px 0px 1px 0px #181615;
 
 }
 .Card-Image{
@@ -95,7 +95,7 @@ h5{
 .Play-Pause-Btn {
   width: 40px;
   height: 40px;
-  margin-bottom: 10%;
+  margin-bottom: 8%;
 }
 
 

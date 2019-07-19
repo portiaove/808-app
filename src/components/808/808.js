@@ -6,6 +6,7 @@ import BeatService from '../../services/BeatService';
 import './808.css'
 import playIcon from '../../images/play.svg'
 import pauseIcon from '../../images/pause.svg'
+import saveIcon from '../../images/FloppyDisk.svg'
 
 
 
@@ -184,7 +185,7 @@ class MachineDrum extends React.Component {
 
           {/* <button onClick={this.handleStart}>Start</button>   */}
 
-          <img onClick={this.handleStart} className='Play-Pause-Btn' src={play ? pauseIcon : playIcon} alt='playBtn' />
+          <img onClick={this.handleStart} className='Play-Pause-Machine' src={play ? pauseIcon : playIcon} alt='playBtn' />
 
           {
             nameIt && 
@@ -200,7 +201,8 @@ class MachineDrum extends React.Component {
             </div>
           }
 
-          <button onClick={this.nameBeat}>Save</button>
+          {/* <button onClick={this.nameBeat}>Save</button> */}
+          <img onClick={this.nameBeat} className='Save-Btn' src={saveIcon} alt='playBtn' />
           < Link to='/home'>Go Back</Link>        
         </div>
 

@@ -20,7 +20,7 @@
   justify-content: space-around;
   align-items: center;
   /* border: 1px solid black; */
-  height: 20vh;
+  height: 25vh;
   margin: 4px;
 }
 
@@ -46,7 +46,7 @@
   justify-content: space-around;
   align-items: center;
   /* border: 1px solid black; */
-  height: 34vh;
+  height: 29vh;
 }
 
 .Controllers *{
@@ -72,6 +72,10 @@
   /* flex: 1; */
 }
 
+.Play-Pause-Machine {
+  width: 55px;
+  height: 55px;
+}
 
 
 /* STEPS */
@@ -79,13 +83,14 @@
 .Steps {
   /* border: 1px solid black; */
   display: flex;
-  height: 35vh;}
+  height: 35vh;
+}
 
 .Step {
   flex: 1;
   border-radius: 10px; 
   background-color:  #e8e7e1;
-
+  margin: 0px 1px;
 }
 
 .Step-Active {
@@ -100,6 +105,8 @@
   justify-content: center;
   align-items: center;
   background: transparent;
+  border: 0px solid #d9d9d9;
+
   /* border: 1px solid #1b864f; */
   border-radius: 10px; 
 }
@@ -124,10 +131,10 @@
 
 /* STEP STYLES */
 .Kick {
-  background-color: #ff9d9d;
+  background-color: #aaf5bb;
 }
 .Snare {
-  background-color: #aaf5bb;
+  background-color: #ff9d9d;
 }
 .ClHat {
   background-color: #efb083;

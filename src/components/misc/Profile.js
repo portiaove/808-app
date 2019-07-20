@@ -85,7 +85,7 @@ class Profile extends React.Component {
           <div className='Profile-Info'>
             <h1>{username}</h1>
             <p>{email}</p>
-            {!id && <button onClick={this.logout}>Logout</button>}
+            {!id && <button className='Logout' onClick={this.logout}>Logout</button>}
           </div>
         </header>
 

@@ -11,7 +11,7 @@
 }
 .Card-Image{
   width: 50%;
-  margin-top: 18%;
+  
 }
 h5{
   font-family: Arial, Helvetica, sans-serif;
@@ -39,7 +39,7 @@ h5{
 }
 
 .Image-Wrapper {
-  
+  margin-top: 9%;
   height: 100%;
   /* flex: 2; */
 }

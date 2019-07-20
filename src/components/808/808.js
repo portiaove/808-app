@@ -208,6 +208,13 @@ class MachineDrum extends React.Component {
           < Link to='/home'>Go Back</Link>        
         </div>
 
+        <div className='Markers'>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+
         <div className="Steps">
 
           {Steps}

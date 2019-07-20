@@ -4,7 +4,7 @@
   /* border: 1px solid black; */
   height: 100%;
   min-height: 100%;
-  margin-top: 15px;
+  margin-top: 12px;
   background-color: transparent;
   border-radius: 5px;;
   /* box-shadow: 3 3 3 3 rgba(99, 138, 10, 0.56); */
@@ -202,6 +202,21 @@
   to {top:25%; opacity:1}
 }
 
+
+/* MARKERS */
+
+.Markers {
+  display: flex;
+  justify-content: center;
+}
+
+.Markers div {
+  background-color: #fdd792;
+  width: 100%;
+  height: 2px;
+  /* margin-bottom: 2vh; */
+  margin: 0vh 2vh 2vh 2vh;
+}
 
 /* RANGE INPUT */
 

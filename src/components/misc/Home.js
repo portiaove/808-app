@@ -7,7 +7,7 @@ const Home = (props) => {
   if (props.isAuthenticated()) {
     return < Redirect to='/home' />
   }
-  
+
   return(
     <div className='Home'>
       <Link className='Link' to='/login'><button className='btn-Link'>Log in</button></Link>

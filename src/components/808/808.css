@@ -37,6 +37,10 @@
   border-radius: 5px;
 }
 
+.Instrument div {
+  /* border: 1px solid yellow; */
+}
+
 
 
 /* CONTROLLERS */
@@ -170,7 +174,7 @@
 .modal-content {
   /* position: relative;  */
   border-radius: 25px;
-  background-color: white;
+  background-color: #e8e7e1;
   padding: 20px; 
   margin: auto; 
   /* top: 25%; */

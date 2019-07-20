@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import AuthField from '../misc/AuthField';
 import AuthService from '../../services/AuthService';
 import { withAuthContext } from '../../contexts/AuthStore';
@@ -150,6 +150,7 @@ class Register extends React.Component {
               // className={`btn ${hasErrors ? 'btn-danger' : 'btn-success'}`}
               disabled={hasErrors}>Register
               </button>
+              <Link className='Link' to='/login'>Already registered? Log in</Link>
           </form>
         </div>
       </div>

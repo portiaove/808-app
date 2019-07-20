@@ -7,6 +7,8 @@ import './808.css'
 import playIcon from '../../images/play.svg'
 import pauseIcon from '../../images/pause.svg'
 import saveIcon from '../../images/FloppyDisk.svg'
+import saveIcon2 from '../../images/FloppyDisk2.svg'
+import saveIcon3 from '../../images/FloppyDisk3.svg'
 
 
 
@@ -168,10 +170,10 @@ class MachineDrum extends React.Component {
         <div className="Instruments">
           < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Kick" name="kick"/>
           < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Snare" name="snare"/>
-          < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Cl Hat" name="clHat"/>
-          < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Op Hat" name="opHat"/>
-          < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Lo Tom" name="loTom"/>
-          < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Hi Tom" name="hiTom"/>
+          < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Closed Hat" name="clHat"/>
+          < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Open Hat" name="opHat"/>
+          < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="Low Tom" name="loTom"/>
+          < Drum activeDrum={activeDrum} onClick={this.handleActiveDrum} title="High Tom" name="hiTom"/>
         </div>
         <div className='Controllers'>
           <div className='Bpm-Controllers'>
@@ -193,16 +195,16 @@ class MachineDrum extends React.Component {
               <div className="modal-content" ref={(node) => this.wrapperRef = node}>
                 <span onClick={this.closeNameBeat} className="close-btn">&times;</span>
                 <form className='Inputs'>
-                  <label>Name it!</label>
-                  <input onChange={this.handleName} name='name' value={name}></input>
-                  <button onClick={this.saveBeat}>Save</button>
+                  {/* <label>Name it!</label> */}
+                  <input onChange={this.handleName} name='name' value={name} placeholder='Name it!'></input>
+                  <button className='btn-Submit' onClick={this.saveBeat}>Save</button>
                 </form>
               </div>
             </div>
           }
 
           {/* <button onClick={this.nameBeat}>Save</button> */}
-          <img onClick={this.nameBeat} className='Save-Btn' src={saveIcon} alt='playBtn' />
+          <img onClick={this.nameBeat} className='Save-Btn' src={saveIcon3} alt='playBtn' /> {/* saveIcon2 */ }
           < Link to='/home'>Go Back</Link>        
         </div>
 

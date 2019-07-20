@@ -25,10 +25,10 @@ class Drum extends React.Component {
     const { activeDrum, name, onClick, title } = this.props
     console.log('Drum Render')
   return(
-    <div className="Instrument">
-      <div className={(activeDrum === name) ? this.handleStyle(name) : 'Black'} style={{width: "30px", height: "5px"}}></div>
+    <div className="Instrument" onClick={() => onClick({ target: { name }})}>
+      <div className={(activeDrum === name) ? this.handleStyle(name) : 'Black'} style={{width: "30px", height: "6px"}}></div>
       <div>
-        <button name={name} onClick={onClick}>{title}</button>
+        <h4>{title}</h4>
       </div>
     </div>
   )

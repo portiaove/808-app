@@ -9,6 +9,7 @@ import pauseIcon from '../../images/pause.svg'
 import saveIcon from '../../images/FloppyDisk.svg'
 import saveIcon2 from '../../images/FloppyDisk2.svg'
 import saveIcon3 from '../../images/FloppyDisk3.svg'
+import goBack from '../../images/GoBack.svg'
 
 
 
@@ -205,7 +206,7 @@ class MachineDrum extends React.Component {
 
           {/* <button onClick={this.nameBeat}>Save</button> */}
           <img onClick={this.nameBeat} className='Save-Btn' src={saveIcon3} alt='playBtn' /> {/* saveIcon2 */ }
-          < Link to='/home'>Go Back</Link>        
+          < Link to='/home'><img className='Save-Btn' src={goBack} alt='goBack' /></Link>        
         </div>
 
         <div className='Markers'>

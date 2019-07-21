@@ -129,7 +129,7 @@ h5{
 }
 
 .heartOn {
-  fill: red;
+  fill: #ff3636;
   position: relative;
   top: 5px;
   width: 20px;

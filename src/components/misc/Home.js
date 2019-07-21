@@ -9,9 +9,11 @@ const Home = (props) => {
   }
 
   return(
+    <div className='Box-Wrapper'>
     <div className='Home'>
       <Link className='Link' to='/login'><button className='btn-Link'>Log in</button></Link>
       <Link className='Link' to='/register'><button className='btn-Link'>Register</button></Link>
+    </div>
     </div>
   )
 }

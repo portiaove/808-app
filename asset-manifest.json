@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/808-app/static/css/main.efc168f6.chunk.css",
-    "main.js": "/808-app/static/js/main.91d3df9a.chunk.js",
-    "main.js.map": "/808-app/static/js/main.91d3df9a.chunk.js.map",
+    "main.js": "/808-app/static/js/main.0bad7182.chunk.js",
+    "main.js.map": "/808-app/static/js/main.0bad7182.chunk.js.map",
     "runtime~main.js": "/808-app/static/js/runtime~main.60e65678.js",
     "runtime~main.js.map": "/808-app/static/js/runtime~main.60e65678.js.map",
     "static/js/2.7940bcf5.chunk.js": "/808-app/static/js/2.7940bcf5.chunk.js",
     "static/js/2.7940bcf5.chunk.js.map": "/808-app/static/js/2.7940bcf5.chunk.js.map",
     "index.html": "/808-app/index.html",
-    "precache-manifest.3b8e6be89e290d7e45f84cd966fa0d55.js": "/808-app/precache-manifest.3b8e6be89e290d7e45f84cd966fa0d55.js",
+    "precache-manifest.dd49869d48e66d39be6a560a9e971f96.js": "/808-app/precache-manifest.dd49869d48e66d39be6a560a9e971f96.js",
     "service-worker.js": "/808-app/service-worker.js",
     "static/css/main.efc168f6.chunk.css.map": "/808-app/static/css/main.efc168f6.chunk.css.map",
     "static/media/808Icon.svg": "/808-app/static/media/808Icon.f7c5fb74.svg",

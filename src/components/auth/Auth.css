@@ -2,20 +2,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed; 
+  /* position: fixed;  */
   left: 0; 
   top: 0;
-  width: 100%;
-  height: 100%; 
+  width: 100vw;
+  height: 100vh; 
 }
 
 .Login {
   padding: 30px;
-  background-color: #e8e7e1;
+  background-color: #e0dfd6;
   /* margin: 0 auto 10px; */
   border-radius: 8px;
   box-shadow: 0px 0px 1px #181615;
   overflow: hidden;
+  width: 50vw;
 }
 
 .Inputs input {

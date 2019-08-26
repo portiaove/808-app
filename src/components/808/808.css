@@ -22,6 +22,7 @@
   /* border: 1px solid black; */
   height: 25vh;
   margin: 4px;
+  font-size: 1vh;
 }
 
 .Instrument {
@@ -161,7 +162,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed; 
+  position: absolute; 
   /* padding-top: 50px; */
   left: 0; 
   top: 0;
@@ -172,13 +173,13 @@
   border: 25px;
 }
 .modal-content {
-  /* position: relative;  */
+  position: absolute; 
   border-radius: 25px;
   background-color: #e0dfd6;
   padding: 20px; 
   margin: auto; 
   /* top: 25%; */
-  width: 50%;  
+  width: 65vw;  
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;

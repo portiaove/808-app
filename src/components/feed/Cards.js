@@ -26,6 +26,11 @@ class Cards extends React.Component {
   componentDidMount() {
     this.fetchLikes()
   }
+
+  componentWillUnmount()  {
+    clearInterval(start)
+    start = null
+  }
   
   handleStart = () => {
 

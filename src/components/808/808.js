@@ -140,6 +140,11 @@ class MachineDrum extends React.Component {
     this.setState({ [name]: value })
   }
 
+  componentWillUnmount()  {
+    clearInterval(start)
+    start = null
+  }
+
 
   render() {
     const { activeDrum, nameIt, name, play } = this.state

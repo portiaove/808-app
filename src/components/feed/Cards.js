@@ -12,8 +12,7 @@ let start = null
 class Cards extends React.Component {
 
   state = {
-    counter: 0,
-    play: false
+    counter: 0
   }
 
 
@@ -37,17 +36,15 @@ class Cards extends React.Component {
   handleStart = () => {
 
     const { bpm, id } = this.props.beats
-    const { play } = this.state
 
     if (!start) {
-      this.setState({ counter: 0, play: !play, si: id }, () => {
+      this.setState({ counter: 0 }, () => {
         start = setInterval(this.count, Math.round((60000/bpm)/4))
       })
       this.props.togglePlay(id)
     } else {
       clearInterval(start);
       start = null
-      this.setState({ play: !play, si: null })
       this.props.togglePlay(null)
     }
   }
@@ -87,7 +84,7 @@ class Cards extends React.Component {
     if (start) {
       clearInterval(start);
       start = null
-      this.setState({ play: !this.state.play })
+      this.props.togglePlay(null)
     }
 
     if (this.props.beats.id !== nextProps.beats.id) {
@@ -103,8 +100,7 @@ class Cards extends React.Component {
     const { bpm, name, createdAt }
     = this.props.beats
     const { username, avatarURL, id } = this.props.beats.owner
-    const { play } = this.state
-    const { liked} = this.state
+    const { liked } = this.state
     const playing = this.props.playing === this.props.beats.id
     
     console.log('Cards Render')

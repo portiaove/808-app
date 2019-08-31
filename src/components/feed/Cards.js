@@ -5,6 +5,7 @@ import Moment from 'react-moment'
 import './Cards.css'
 import playIcon from '../../images/play.svg'
 import pauseIcon from '../../images/pause.svg'
+import {withPlayContext} from '../../contexts/PlayStore'
 
 let start = null
 
@@ -30,21 +31,24 @@ class Cards extends React.Component {
   componentWillUnmount()  {
     clearInterval(start)
     start = null
+    this.props.togglePlay(null)
   }
   
   handleStart = () => {
 
-    const { bpm } = this.props.beats
+    const { bpm, id } = this.props.beats
     const { play } = this.state
 
     if (!start) {
-      this.setState({ counter: 0, play: !play }, () => {
+      this.setState({ counter: 0, play: !play, si: id }, () => {
         start = setInterval(this.count, Math.round((60000/bpm)/4))
       })
+      this.props.togglePlay(id)
     } else {
       clearInterval(start);
       start = null
-      this.setState({ play: !play })
+      this.setState({ play: !play, si: null })
+      this.props.togglePlay(null)
     }
   }
 
@@ -100,7 +104,8 @@ class Cards extends React.Component {
     = this.props.beats
     const { username, avatarURL, id } = this.props.beats.owner
     const { play } = this.state
-    const { liked } = this.state
+    const { liked} = this.state
+    const playing = this.props.playing === this.props.beats.id
     
     console.log('Cards Render')
 
@@ -130,7 +135,7 @@ class Cards extends React.Component {
                 </svg> 
                 <h5>{this.props.beats.likes} likes</h5>
               </div>}
-              <img onClick={this.handleStart} className='Play-Pause-Btn' src={play ? pauseIcon : playIcon} alt='playBtn' />
+              <img onClick={this.handleStart} className='Play-Pause-Btn' src={playing ? pauseIcon : playIcon} alt='playBtn' />
             </div>
           </div>
         </div>
@@ -143,4 +148,4 @@ class Cards extends React.Component {
 }
 }
 
-export default Cards;
+export default withPlayContext(Cards);

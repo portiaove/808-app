@@ -56,7 +56,7 @@ class Feed extends React.Component {
 
 
   render() { 
-    const { beats, orderedBy } = this.state
+    const { beats, orderedBy, playing } = this.state
     let orderedBeats = beats
 
     console.log('Feed Render')
